@@ -1,0 +1,12 @@
+.landing-page {
+  margin: 5em;
+}
+
+.login-button {
+  border: thin solid grey;
+  display: inline;
+  margin: 1em;
+  padding: 1em;
+  cursor: pointer;
+}
+/*# sourceMappingURL=style.css.map */
