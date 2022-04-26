@@ -43,5 +43,7 @@ async function Logout() {
     console.log(error);
   }
 }
+
+const userObj = getAuth().currentUser;
 const db = getFirestore();
-export { app, auth, Login, Logout, db };
+export { app, auth, Login, Logout, db, userObj };

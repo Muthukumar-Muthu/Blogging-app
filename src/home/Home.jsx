@@ -6,22 +6,33 @@ import NewBlog from "../new-blog/NewBlog";
 import { getDoc, query, collection, getDocs } from "firebase/firestore";
 import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
-export default function Home({ setBlogs, blogs }) {
+import { getAuth } from "firebase/auth";
+
+export default function Home({ setBlogs, userObj, blogs }) {
   useEffect(() => {
     getBlogs();
+    console.log("Home mounted");
+    return () => {
+      console.log("home unmounted");
+    };
   }, []);
   async function getBlogs() {
     const blogsArray = [];
-    console.log("getting blogs");
+
     try {
-      const userId = auth.currentUser.uid;
+      const userId = userObj.uid;
+      console.log(userId);
+
       const blogsQuery = query(collection(db, `users/${userId}/blogs`));
+
       const blogs = await getDocs(blogsQuery);
       blogs.forEach((blog) => {
-        console.log("getting blog");
         blogsArray.push({ ...blog.data(), id: blog.id });
       });
-      setBlogs(blogsArray);
+      if (blogsArray.length !== 0) {
+        console.log("setting");
+        setBlogs(blogsArray);
+      } else console.log("not setting the state");
     } catch (error) {
       console.log(error);
     }

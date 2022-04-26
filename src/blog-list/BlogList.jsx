@@ -5,9 +5,10 @@ const BlogList = ({ blogs }) => {
   return (
     <section className="blog-list">
       <ul>
-        <li className="add-blog">
-          <Link to="/blog/new">Add new Blog +</Link>
-        </li>
+        <Link to="/blog/new">
+          <li className="add-blog">Add new Blog + </li>
+        </Link>
+
         {blogs.length === 0
           ? "Get Started"
           : blogs.map((blog) => <BlogSneakPic key={blog.id} BlogObj={blog} />)}

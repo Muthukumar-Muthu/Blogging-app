@@ -10,7 +10,7 @@ const NewBlog = () => {
 
   function submitHandler(e) {
     e.preventDefault();
-    console.log("submitted");
+    //console.log("submitted");
     saveBlog(formObj);
     navigate("/home");
   }
@@ -23,13 +23,14 @@ const NewBlog = () => {
         ...obj,
         heading: captilizedHeading,
         timeStamp: serverTimestamp(),
+        name: getAuth().currentUser.displayName,
       });
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   }
   function changeHandler(e) {
-    console.log(e, e.target, e.target.name);
+    //console.log(e, e.target, e.target.name);
     setFormObj((p) => {
       return {
         ...p,
@@ -71,11 +72,11 @@ const NewBlog = () => {
           <button type="submit" onClick={submitHandler}>
             Submit Blog
           </button>
-          <button type="cancel" onClick={goBack}>
-            Go back
-          </button>
         </div>
       </form>
+      <button className="cancel" onClick={goBack}>
+        Go back
+      </button>
     </div>
   );
 };

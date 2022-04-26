@@ -6,8 +6,11 @@ import "./App.css";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import Blog from "./blog/Blog";
 function App() {
   const [userLogged, setUserLogged] = useState(false);
+  const [userObj, setUserObj] = useState({});
+
   const navigate = useNavigate();
 
   const [blogs, setBlogs] = useState([]);
@@ -16,14 +19,15 @@ function App() {
     function observer(user) {
       if (user) {
         setUserLogged(true);
-        console.log("Logged");
+        setUserObj(getAuth().currentUser);
+        //console.log("Logged");
         navigate("/home");
       } else {
         setUserLogged(false);
-        console.log("Logged out");
+        //console.log("Logged out");
         navigate("/");
       }
-      console.log(getAuth().currentUser);
+      //console.log(getAuth().currentUser);
     }
     const unsubsribe = onAuthStateChanged(auth, observer);
     return unsubsribe;
@@ -34,9 +38,10 @@ function App() {
       <Route path="/" element={<LandingPage />} />
       <Route
         path="/home"
-        element={<Home blogs={blogs} setBlogs={setBlogs} />}
+        element={<Home blogs={blogs} userObj={userObj} setBlogs={setBlogs} />}
       />
       <Route path={`/blog/new`} element={<NewBlog />} />
+      <Route path={`/blog/:blogId`} element={<Blog />} />
     </Routes>
   );
 }
