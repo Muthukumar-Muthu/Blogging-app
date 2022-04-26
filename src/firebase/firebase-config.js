@@ -7,6 +7,7 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -42,4 +43,5 @@ async function Logout() {
     console.log(error);
   }
 }
-export { app, auth, Login, Logout };
+const db = getFirestore();
+export { app, auth, Login, Logout, db };
