@@ -6,8 +6,11 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   signOut,
+  setPersistence,
+  browserLocalPersistence,
 } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -27,20 +30,28 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 //login
-async function Login() {
+
+async function Login(fun = () => {}) {
   try {
     const provider = new GoogleAuthProvider();
-    await signInWithPopup(getAuth(), provider);
+    await setPersistence(auth, browserLocalPersistence);
+    await signInWithPopup(auth, provider);
+    //console.log(fun);
+    fun();
+    localStorage.setItem("userLogged", true);
   } catch (error) {
-    console.log(error);
+    //console.log(error);
   }
 }
 
-async function Logout() {
+async function Logout(fun = () => {}) {
   try {
     await signOut(auth);
+    //console.log(fun);
+    fun();
+    localStorage.setItem("userLogged", false);
   } catch (error) {
-    console.log(error);
+    //console.log(error);
   }
 }
 

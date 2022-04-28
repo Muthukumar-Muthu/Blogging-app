@@ -1,27 +1,37 @@
-import { Logout, db, auth } from "../firebase/firebase-config";
+import { Logout, db } from "../firebase/firebase-config";
 import "./style.css";
 import BlogList from "../blog-list/BlogList";
-import NewBlog from "../new-blog/NewBlog";
 
-import { getDoc, query, collection, getDocs } from "firebase/firestore";
-import { Routes, Route } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { getAuth } from "firebase/auth";
+import { query, collection, getDocs } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import Profile from "../side-bar/profile/Profile";
 
-export default function Home({ setBlogs, userObj, blogs }) {
+export default function Home({
+  getUserDetail,
+  localUserObj,
+  setBlogs,
+  setUserLogged,
+  userObj,
+  blogs,
+}) {
+  useEffect(() => {
+    getUserDetail();
+  }, []);
   useEffect(() => {
     getBlogs();
-    console.log("Home mounted");
+    //console.log("Home mounted");
     return () => {
-      console.log("home unmounted");
+      //console.log("home unmounted");
     };
   }, []);
   async function getBlogs() {
     const blogsArray = [];
 
     try {
+      //console.log(userObj, "userObj");
       const userId = userObj.uid;
-      console.log(userId);
+      //console.log(userId);
 
       const blogsQuery = query(collection(db, `users/${userId}/blogs`));
 
@@ -30,20 +40,32 @@ export default function Home({ setBlogs, userObj, blogs }) {
         blogsArray.push({ ...blog.data(), id: blog.id });
       });
       if (blogsArray.length !== 0) {
-        console.log("setting");
+        //console.log("setting");
         setBlogs(blogsArray);
       } else console.log("not setting the state");
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   }
-  console.log(blogs);
+  const navigate = useNavigate();
+  //console.log(blogs);
   return (
     <div className="home">
-      <section className="profile">Muthukumar</section>
       <BlogList blogs={blogs} />
-      <div className="logout" onClick={Logout}>
-        Logout
+      <div>
+        <div
+          className="logout"
+          onClick={() => {
+            Logout(() => {
+              setUserLogged(false);
+              navigate("/");
+              //console.log("navigated to login");
+            });
+          }}
+        >
+          Logout
+        </div>
+        <Profile localUserObj={localUserObj} />
       </div>
     </div>
   );
