@@ -15,7 +15,7 @@ function BlogSneakPic({ BlogObj }) {
   }
   const id = BlogObj.id;
   return (
-    <Link to={`/blog/${id}`}>
+    <Link to={`blog/${id}`}>
       <li className="blog-sneak-pic">
         <h2 className="heading">{heading}</h2>
         <p className="summary">{summary.slice(0, 50)}</p>

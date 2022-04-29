@@ -1,0 +1,17 @@
+.blog-wrapper {
+  margin-block: 2em;
+  margin-inline: 10em auto;
+  min-width: 450px;
+
+  width: 60%;
+  padding: 1em;
+  padding-left: 0;
+  line-height: 2em;
+  .heading,
+  .author,
+  .time {
+    margin-block: 2em;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,10 @@
+.right-side-bar {
+  border-left: thin solid lightgray;
+  height: 200vh;
+  overflow-y: scroll;
+  margin: 0;
+  padding: 1em;
+  width: 60%;
+  max-width: 450px;
+}
+/*# sourceMappingURL=style.css.map */

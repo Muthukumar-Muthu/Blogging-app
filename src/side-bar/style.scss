@@ -2,6 +2,9 @@
   margin: 0 !important;
   padding: 1em;
   height: 100vh;
+  position: fixed;
+  z-index: 0;
+  margin-left: 1em;
   border-right: thin solid lightgray;
   > * {
     cursor: pointer;

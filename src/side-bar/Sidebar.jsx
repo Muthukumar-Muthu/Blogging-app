@@ -19,7 +19,7 @@ const Sidebar = () => {
         <ToolTip Children={FaDraftingCompass} text={"Drafts"} />
         <ToolTip Children={FaEdit} text={"Edit"} />
       </div>
-      <img class="user-photo" src="\assests\user-photo.png" alt="" />
+      <img className="user-photo" src="\assests\user-photo.png" alt="" />
     </div>
   );
 };

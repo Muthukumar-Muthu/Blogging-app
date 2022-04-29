@@ -13,7 +13,9 @@ import { getAuth } from "firebase/auth";
 function App() {
   const [userLogged, setUserLogged] = useState(false);
   const [userObj, setUserObj] = useState({});
-  const [blogs, setBlogs] = useState([]);
+  const [blogs, setBlogs] = useState([
+    { heading: "Heading", summary: "Summary", id: "dfaf" },
+  ]);
   const [localUserObj, setLocalUserObj] = useState({});
 
   async function getUserDetail() {
@@ -48,7 +50,7 @@ function App() {
       {userLogged && (
         <>
           <Route
-            path="/home"
+            path="/home/*"
             element={
               <Home
                 getUserDetail={getUserDetail}
@@ -61,7 +63,6 @@ function App() {
             }
           />
           <Route path={`/blog/new`} element={<NewBlog />} />
-          <Route path={`/blog/:blogId`} element={<Blog />} />
         </>
       )}
     </Routes>

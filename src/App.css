@@ -7,13 +7,14 @@
 }
 .home {
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
+  flex-direction: row;
 
-  align-items: start;
+  height: fit-content;
 }
-.home > * {
+/* .home > * {
   margin-inline: auto;
-}
+} */
 .profile {
   margin: 0;
   padding: 0;
@@ -127,6 +128,8 @@ form > #summary {
   font-size: medium;
   font-weight: normal;
 }
+
+/*
 .blog-wrapper {
   margin: 3em;
   display: flex;
@@ -142,4 +145,4 @@ form > #summary {
 }
 .blog > * {
   margin: 2em;
-}
+} */
