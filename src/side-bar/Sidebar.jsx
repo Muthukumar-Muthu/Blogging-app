@@ -1,24 +1,25 @@
-import { useState } from "react";
-import { FaIdCard } from "react-icons/fa";
+import {
+  FaHome,
+  FaBell,
+  FaSave,
+  FaDraftingCompass,
+  FaEdit,
+} from "react-icons/fa";
 
+import ToolTip from "./ToolTip";
 import "./style.css";
-import Profile from "./profile/Profile";
 const Sidebar = () => {
-  const [show, setShow] = useState(false);
   return (
-    <div
-      className="sidebar"
-      style={{
-        backgroundColor: "red",
-        cursor: "pointer",
-        marginLeft: "1em",
-      }}
-      onMouseOver={() => {
-        setShow(true);
-      }}
-      onMouseLeave={() => setShow(false)}
-    >
-      {show ? <Profile /> : <FaIdCard />}
+    <div className="sidebar">
+      <img className="logo" src="\assests\logo.png" alt="blogger-logo" />
+      <div className="icons">
+        <ToolTip Children={FaHome} text={"Home"} />
+        <ToolTip Children={FaBell} text={"Notifications"} />
+        <ToolTip Children={FaSave} text={"Lists"} />
+        <ToolTip Children={FaDraftingCompass} text={"Drafts"} />
+        <ToolTip Children={FaEdit} text={"Edit"} />
+      </div>
+      <img class="user-photo" src="\assests\user-photo.png" alt="" />
     </div>
   );
 };

@@ -1,18 +1,12 @@
-import {
-  collection,
-  getDoc,
-  Timestamp,
-  doc,
-  documentId,
-  DocumentReference,
-} from "firebase/firestore";
+import { getDoc, Timestamp, doc } from "firebase/firestore";
 import moment from "moment";
 import { getAuth } from "firebase/auth";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { auth, db } from "../firebase/firebase-config";
+import { db } from "../firebase/firebase-config";
 const Blog = () => {
   const { blogId } = useParams();
+  console.log(blogId);
   let userObj = {};
   const [blogObj, setBlogObj] = useState({});
   useEffect(() => {

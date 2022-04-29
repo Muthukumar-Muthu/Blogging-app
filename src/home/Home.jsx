@@ -1,7 +1,7 @@
 import { Logout, db } from "../firebase/firebase-config";
 import "./style.css";
 import BlogList from "../blog-list/BlogList";
-
+import Sidebar from "../side-bar/Sidebar";
 import { query, collection, getDocs } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
@@ -17,14 +17,14 @@ export default function Home({
 }) {
   useEffect(() => {
     getUserDetail();
-  }, []);
+  });
   useEffect(() => {
     getBlogs();
     //console.log("Home mounted");
     return () => {
       //console.log("home unmounted");
     };
-  }, []);
+  });
   async function getBlogs() {
     const blogsArray = [];
 
@@ -51,6 +51,7 @@ export default function Home({
   //console.log(blogs);
   return (
     <div className="home">
+      <Sidebar />
       <BlogList blogs={blogs} />
       <div>
         <div

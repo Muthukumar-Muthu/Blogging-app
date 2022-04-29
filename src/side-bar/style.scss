@@ -1,4 +1,72 @@
 .sidebar {
-  transition: all 0.2ms;
-  margin-left: 0;
+  margin: 0 !important;
+  padding: 1em;
+  height: 100vh;
+  border-right: thin solid lightgray;
+  > * {
+    cursor: pointer;
+  }
+}
+.logo {
+  width: 75px;
+  margin-bottom: 0;
+  margin-top: 2em;
+}
+.icons,
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.icons {
+  font-size: xx-large;
+  padding: 0;
+  margin-top: 2em;
+
+  > * {
+    margin-top: 1em;
+  }
+}
+.user-photo {
+  margin-top: auto;
+  width: 35px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 2em;
+}
+.icon {
+  position: relative;
+}
+
+/*
+.tooltip::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: red;
+  position: absolute;
+  left: -10px;
+  top: 0;
+  z-index: 1;
+  border: 100px solid green;
+  border-top: green;
+  border-right: transparent;
+  border-bottom: transparent;
+  border-left: transparent;
+  width: 0;
+  height: 0;
+} */
+
+.tooltip {
+  text-transform: capitalize;
+  position: absolute;
+  bottom: 30%;
+
+  left: 105%;
+  z-index: 1;
+  font-size: small;
+  background-color: black;
+  color: white;
+  border-radius: 25px;
+  padding: 0.25em 0.75em;
 }

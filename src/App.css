@@ -8,7 +8,7 @@
 .home {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 1em;
+
   align-items: start;
 }
 .home > * {
@@ -78,8 +78,6 @@ li > * {
 .heading {
   font-weight: bolder;
   font-size: larger;
-}
-.summary {
 }
 
 .flex {

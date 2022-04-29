@@ -34,8 +34,8 @@ const auth = getAuth(app);
 async function Login(fun = () => {}) {
   try {
     const provider = new GoogleAuthProvider();
-    await setPersistence(auth, browserLocalPersistence);
-    await signInWithPopup(auth, provider);
+    await setPersistence(getAuth(app), browserLocalPersistence);
+    await signInWithPopup(getAuth(app), provider);
     //console.log(fun);
     fun();
     localStorage.setItem("userLogged", true);

@@ -6,16 +6,15 @@ import Blog from "./blog/Blog";
 
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { collection, doc, getDoc, getDocs } from "firebase/firestore";
-import { db } from "./firebase/firebase-config";
+import { doc, getDoc } from "firebase/firestore";
+import { app, auth, db } from "./firebase/firebase-config";
+import { getAuth } from "firebase/auth";
 
 function App() {
   const [userLogged, setUserLogged] = useState(false);
   const [userObj, setUserObj] = useState({});
   const [blogs, setBlogs] = useState([]);
   const [localUserObj, setLocalUserObj] = useState({});
-
-  const navigate = useNavigate();
 
   async function getUserDetail() {
     try {
@@ -27,14 +26,16 @@ function App() {
       console.error(error);
     }
   }
-  useEffect(() => {
-    console.log("userLogged", userLogged);
-    if (userLogged) {
+
+  getAuth().onAuthStateChanged((user) => {
+    if (user) {
+      setUserLogged(true);
     } else {
+      setUserLogged(false);
       setUserObj({});
-      navigate("/");
     }
-  }, [userLogged]);
+  });
+
   //console.log("userObj", userObj);
   return (
     <Routes>
