@@ -30,7 +30,6 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 //login
-
 async function Login(fun = () => {}) {
   try {
     const provider = new GoogleAuthProvider();
@@ -38,9 +37,8 @@ async function Login(fun = () => {}) {
     await signInWithPopup(getAuth(app), provider);
     //console.log(fun);
     fun();
-    localStorage.setItem("userLogged", true);
   } catch (error) {
-    //console.log(error);
+    console.log(error);
   }
 }
 
@@ -51,10 +49,11 @@ async function Logout(fun = () => {}) {
     fun();
     localStorage.setItem("userLogged", false);
   } catch (error) {
-    //console.log(error);
+    console.log(error);
   }
 }
 
 const userObj = getAuth().currentUser;
 const db = getFirestore();
+
 export { app, auth, Login, Logout, db, userObj };

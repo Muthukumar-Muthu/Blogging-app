@@ -1,4 +1,5 @@
 import "./style.css";
+
 const RightSideBar = () => {
   return (
     <div className="right-side-bar">

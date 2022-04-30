@@ -2,9 +2,11 @@ import { Timestamp } from "firebase/firestore";
 import moment from "moment";
 import { getAuth } from "firebase/auth";
 import { Link } from "react-router-dom";
+
 function BlogSneakPic({ BlogObj }) {
   const { heading, summary, timeStamp } = BlogObj;
-  //console.log(timeStamp);
+  const id = BlogObj.id;
+
   let date = "";
   if (timeStamp) {
     const time = new Timestamp(timeStamp.seconds, timeStamp.nanoseconds);
@@ -13,7 +15,7 @@ function BlogSneakPic({ BlogObj }) {
   } else {
     date = moment(new Date()).format("LLL");
   }
-  const id = BlogObj.id;
+
   return (
     <Link to={`blog/${id}`}>
       <li className="blog-sneak-pic">
@@ -23,7 +25,7 @@ function BlogSneakPic({ BlogObj }) {
           <h4 className="author">{getAuth().currentUser.displayName}</h4>
           <h6 className="time">{date}</h6>
         </div>
-      </li>{" "}
+      </li>
     </Link>
   );
 }

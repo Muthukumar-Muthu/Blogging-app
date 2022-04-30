@@ -1,6 +1,5 @@
-import { useState } from "react";
-import { FaBell, FaChartLine, FaBook } from "react-icons/fa";
 import "./style.css";
+
 const Profile = ({ showToolTip, setshowToolTip }) => {
   return (
     <div className="profile">

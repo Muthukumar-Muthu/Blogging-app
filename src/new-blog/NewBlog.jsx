@@ -10,7 +10,6 @@ const NewBlog = () => {
 
   function submitHandler(e) {
     e.preventDefault();
-    //console.log("submitted");
     saveBlog(formObj);
     navigate("/home");
   }
@@ -26,11 +25,10 @@ const NewBlog = () => {
         name: getAuth().currentUser.displayName,
       });
     } catch (error) {
-      //console.log(error);
+      console.log(error);
     }
   }
   function changeHandler(e) {
-    //console.log(e, e.target, e.target.name);
     setFormObj((p) => {
       return {
         ...p,

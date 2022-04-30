@@ -1,8 +1,3 @@
-import LandingPage from "./landing-page/LandingPage";
-import Home from "./home/Home";
-import NewBlog from "./new-blog/NewBlog";
-import "./App.css";
-
 import { Route, Routes } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {
@@ -13,8 +8,13 @@ import {
   onSnapshot,
   orderBy,
 } from "firebase/firestore";
-import { db } from "./firebase/firebase-config";
 import { getAuth } from "firebase/auth";
+
+import LandingPage from "./landing-page/LandingPage";
+import Home from "./home/Home";
+import NewBlog from "./new-blog/NewBlog";
+import "./App.css";
+import { db } from "./firebase/firebase-config";
 
 function App() {
   const [userLogged, setUserLogged] = useState(false);
@@ -53,6 +53,7 @@ function App() {
       return unsub;
     }
   }, [userLogged]);
+
   function getBlogs() {
     console.log("Getting Blogs");
 

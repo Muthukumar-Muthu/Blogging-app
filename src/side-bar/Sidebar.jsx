@@ -5,6 +5,7 @@ import {
   FaDraftingCompass,
   FaEdit,
 } from "react-icons/fa";
+
 import Profile from "../profile/Profile";
 import ToolTip from "./ToolTip";
 import "./style.css";

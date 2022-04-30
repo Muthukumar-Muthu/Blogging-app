@@ -1,15 +1,12 @@
-import { Logout, db } from "../firebase/firebase-config";
+import { Routes, Route } from "react-router-dom";
+import { useState } from "react";
+
 import "./style.css";
 import BlogList from "../blog-list/BlogList";
 import Sidebar from "../side-bar/Sidebar";
 import RightSideBar from "../right-side-bar/RightSideBar";
-import { query, collection, getDocs } from "firebase/firestore";
-import { Routes, Route, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-// import Profile from "../side-bar/profile/Profile";
 import Blog from "../blog/Blog";
-import { onSnapshot } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
+
 export default function Home({
   getUserDetail,
   localUserObj,
@@ -20,15 +17,6 @@ export default function Home({
 }) {
   const [showToolTip, setshowToolTip] = useState(false);
 
-  // useEffect(() => {
-  //   let unsub = 0;
-  //   try {
-  //     unsub = getBlogs();
-  //   } catch (error) {
-  //     console.warn(error);
-  //   }
-  //   return unsub;
-  // }, []);
   function closeProfileToolTip(e) {
     const elementName = e.target.className;
     if (elementName !== "user-photo") setshowToolTip(false);
