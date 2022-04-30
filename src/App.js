@@ -2,20 +2,24 @@ import LandingPage from "./landing-page/LandingPage";
 import Home from "./home/Home";
 import NewBlog from "./new-blog/NewBlog";
 import "./App.css";
-import Blog from "./blog/Blog";
 
-import { Route, Routes, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { doc, getDoc } from "firebase/firestore";
-import { app, auth, db } from "./firebase/firebase-config";
+import { Route, Routes } from "react-router-dom";
+import { useEffect, useState } from "react";
+import {
+  doc,
+  getDoc,
+  collection,
+  query,
+  onSnapshot,
+  orderBy,
+} from "firebase/firestore";
+import { db } from "./firebase/firebase-config";
 import { getAuth } from "firebase/auth";
 
 function App() {
   const [userLogged, setUserLogged] = useState(false);
   const [userObj, setUserObj] = useState({});
-  const [blogs, setBlogs] = useState([
-    { heading: "Heading", summary: "Summary", id: "dfaf" },
-  ]);
+  const [blogs, setBlogs] = useState([]);
   const [localUserObj, setLocalUserObj] = useState({});
 
   async function getUserDetail() {
@@ -37,8 +41,36 @@ function App() {
       setUserObj({});
     }
   });
+  useEffect(() => {
+    console.log(userLogged);
+    if (userLogged) {
+      let unsub = 0;
+      try {
+        unsub = getBlogs();
+      } catch (error) {
+        console.warn(error);
+      }
+      return unsub;
+    }
+  }, [userLogged]);
+  function getBlogs() {
+    console.log("Getting Blogs");
 
-  //console.log("userObj", userObj);
+    const blogsQuery = query(
+      collection(db, `users/${getAuth().currentUser.uid}/blogs`),
+      orderBy("timeStamp", "desc")
+    );
+    const q = onSnapshot(blogsQuery, function (snapshot) {
+      let blogsArray = [];
+      snapshot.docs.forEach((doc) => {
+        console.log(doc.data());
+        blogsArray.push({ id: doc.id, ...doc.data() });
+      });
+      setBlogs(blogsArray);
+    });
+    return q;
+  }
+
   return (
     <Routes>
       <Route

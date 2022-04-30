@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import "./style.css";
 import BlogSneakPic from "./BlogSneakPic";
 const BlogList = ({ blogs }) => {
+  console.log("blog-list", blogs);
   return (
     <section className="blog-list">
       <ul>
