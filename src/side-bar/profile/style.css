@@ -1,0 +1,46 @@
+.profile {
+  position: relative;
+  margin-top: auto;
+  margin-bottom: 2em;
+}
+
+.user-photo {
+  width: 35px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profile-tooltip {
+  font-size: small;
+  position: absolute;
+  bottom: 110%;
+  left: -10%;
+  background-color: white;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+          box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+
+.profile-tooltip > div {
+  padding: 0.8em 1em;
+}
+
+.profile-tooltip .user-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0;
+}
+
+.profile-tooltip .user-info img {
+  margin: 1em;
+}
+
+.profile-tooltip .user-info > div {
+  margin-block: auto;
+  margin-inline: 1em;
+}
+
+.profile-tooltip .user-info > div > div {
+  margin-block: 0.5em;
+}
+/*# sourceMappingURL=style.css.map */

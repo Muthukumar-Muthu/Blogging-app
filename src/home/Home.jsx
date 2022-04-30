@@ -5,7 +5,7 @@ import Sidebar from "../side-bar/Sidebar";
 import RightSideBar from "../side-bar/right-side-bar/RightSideBar";
 import { query, collection, getDocs } from "firebase/firestore";
 import { Routes, Route, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Profile from "../side-bar/profile/Profile";
 import Blog from "../blog/Blog";
 
@@ -17,6 +17,7 @@ export default function Home({
   userObj,
   blogs,
 }) {
+  const [showToolTip, setshowToolTip] = useState(false);
   useEffect(() => {
     getUserDetail();
   });
@@ -27,6 +28,11 @@ export default function Home({
       //console.log("home unmounted");
     };
   });
+  function closeProfileToolTip(e) {
+    const elementName = e.target.className;
+    if (elementName !== "user-photo") setshowToolTip(false);
+    console.log(elementName);
+  }
   async function getBlogs() {
     const blogsArray = [];
 
@@ -52,8 +58,8 @@ export default function Home({
   const navigate = useNavigate();
   //console.log(blogs);
   return (
-    <div className="home">
-      <Sidebar />
+    <div className="home" onClick={closeProfileToolTip}>
+      <Sidebar showToolTip={showToolTip} setshowToolTip={setshowToolTip} />
       <Routes>
         <Route path="/" element={<BlogList blogs={blogs} />} />
 

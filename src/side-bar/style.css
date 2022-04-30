@@ -25,11 +25,11 @@
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .icons {
@@ -40,14 +40,6 @@
 
 .icons > * {
   margin-top: 1em;
-}
-
-.user-photo {
-  margin-top: auto;
-  width: 35px;
-  border-radius: 50%;
-  overflow: hidden;
-  margin-bottom: 2em;
 }
 
 .icon {

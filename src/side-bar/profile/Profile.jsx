@@ -1,36 +1,33 @@
 import { useState } from "react";
-
-const Profile = ({ localUserObj }) => {
-  const [edit, setEdit] = useState(false);
-  function fun(input) {
-    if (edit) return <input type="text" value={input} />;
-    else return input;
-  }
-  const editHandler = () => {
-    setEdit(true);
-  };
-  const saveHandler = () => {
-    setEdit(false);
-  };
-  const { name, blogsCount, starredCount } = localUserObj;
+import { FaBell, FaChartLine, FaBook } from "react-icons/fa";
+import "./style.css";
+const Profile = ({ showToolTip, setshowToolTip }) => {
   return (
     <div className="profile">
-      <div>
-        <span className="label">Name :</span>
-        <span className="background-lightgrey">{fun(name)}</span>
-      </div>
-      <div>
-        <span className="label">No.of Blogs :</span>
-        <span className="background-lightgrey">{fun(blogsCount)}</span>
-      </div>
-      <div>
-        <span className="label">starred :</span>
-        <span className="background-lightgrey">{fun(starredCount)}</span>
-      </div>
-      {edit ? (
-        <button onClick={saveHandler}>Save</button>
-      ) : (
-        <button onClick={editHandler}>Edit</button>
+      <img
+        onMouseEnter={() => {
+          setshowToolTip(true);
+        }}
+        onClick={() => {
+          setshowToolTip(true);
+        }}
+        className="user-photo"
+        src="assests/user-photo.png"
+        alt=""
+      />
+      {showToolTip && (
+        <div className="profile-tooltip">
+          <div>Sign out</div>
+          <div>Stats</div>
+          <div>Settings</div>
+          <div className="user-info">
+            <img className="user-photo" src="assests/user-photo.png" alt="" />
+            <div>
+              <div className="name">Muthu Kumar</div>
+              <div className="email">m.m.muthu1388@gmail.com</div>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );

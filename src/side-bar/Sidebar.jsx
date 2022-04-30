@@ -5,10 +5,10 @@ import {
   FaDraftingCompass,
   FaEdit,
 } from "react-icons/fa";
-
+import Profile from "./profile/Profile";
 import ToolTip from "./ToolTip";
 import "./style.css";
-const Sidebar = () => {
+const Sidebar = ({ showToolTip, setshowToolTip }) => {
   return (
     <div className="sidebar">
       <img className="logo" src="\assests\logo.png" alt="blogger-logo" />
@@ -19,7 +19,7 @@ const Sidebar = () => {
         <ToolTip Children={FaDraftingCompass} text={"Drafts"} />
         <ToolTip Children={FaEdit} text={"Edit"} />
       </div>
-      <img className="user-photo" src="\assests\user-photo.png" alt="" />
+      <Profile showToolTip={showToolTip} setshowToolTip={setshowToolTip} />
     </div>
   );
 };
