@@ -1,37 +1,18 @@
 import { Route, Routes } from "react-router-dom";
 import { useEffect, useState } from "react";
-import {
-  doc,
-  getDoc,
-  collection,
-  query,
-  onSnapshot,
-  orderBy,
-} from "firebase/firestore";
+import { collection, query, onSnapshot, orderBy } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
+import "./App.css";
 import LandingPage from "./landing-page/LandingPage";
 import Home from "./home/Home";
 import NewBlog from "./new-blog/NewBlog";
-import "./App.css";
 import { db } from "./firebase/firebase-config";
 
 function App() {
   const [userLogged, setUserLogged] = useState(false);
   const [userObj, setUserObj] = useState({});
   const [blogs, setBlogs] = useState([]);
-  const [localUserObj, setLocalUserObj] = useState({});
-
-  async function getUserDetail() {
-    try {
-      const docObj = await getDoc(doc(db, `users/${userObj.uid}/`));
-      const { detail } = docObj.data();
-
-      setLocalUserObj(detail);
-    } catch (error) {
-      console.error(error);
-    }
-  }
 
   getAuth().onAuthStateChanged((user) => {
     if (user) {
@@ -86,12 +67,10 @@ function App() {
             path="/home/*"
             element={
               <Home
-                getUserDetail={getUserDetail}
                 blogs={blogs}
                 userObj={userObj}
                 setUserLogged={setUserLogged}
                 setBlogs={setBlogs}
-                localUserObj={localUserObj}
               />
             }
           />

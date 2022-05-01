@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import "./style.css";
 import BlogList from "../blog-list/BlogList";
-import Sidebar from "../side-bar/Sidebar";
+import LeftSideBar from "../left-side-bar/LeftSideBar";
 import RightSideBar from "../right-side-bar/RightSideBar";
 import Blog from "../blog/Blog";
 
@@ -25,7 +25,7 @@ export default function Home({
 
   return (
     <div className="home" onClick={closeProfileToolTip}>
-      <Sidebar showToolTip={showToolTip} setshowToolTip={setshowToolTip} />
+      <LeftSideBar showToolTip={showToolTip} setshowToolTip={setshowToolTip} />
       <Routes>
         <Route path="/" element={<BlogList blogs={blogs} />} />
         <Route path={`/blog/:blogId`} element={<Blog blogs={blogs} />} />

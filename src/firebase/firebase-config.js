@@ -52,8 +52,34 @@ async function Logout(fun = () => {}) {
     console.log(error);
   }
 }
-
+function isUserSignedIn() {
+  return !!getAuth().currentUser;
+}
+function getUserId() {
+  return getAuth().currentUser.uid;
+}
+function getUserName() {
+  return getAuth().currentUser.displayName;
+}
+function getUserMail() {
+  return getAuth().currentUser.email;
+}
+function getUserPhoto() {
+  return getAuth().currentUser.photoURL || "assests/user-photo.png";
+}
 const userObj = getAuth().currentUser;
 const db = getFirestore();
 
-export { app, auth, Login, Logout, db, userObj };
+export {
+  app,
+  auth,
+  Login,
+  Logout,
+  db,
+  userObj,
+  isUserSignedIn,
+  getUserId,
+  getUserName,
+  getUserMail,
+  getUserPhoto,
+};

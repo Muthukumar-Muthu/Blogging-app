@@ -64,7 +64,6 @@
   text-transform: capitalize;
   position: absolute;
   bottom: 30%;
-
   left: 105%;
   z-index: 1;
   font-size: small;
@@ -72,4 +71,7 @@
   color: white;
   border-radius: 25px;
   padding: 0.25em 0.75em;
+}
+a {
+  color: black;
 }

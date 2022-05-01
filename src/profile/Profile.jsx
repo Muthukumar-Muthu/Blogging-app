@@ -1,5 +1,9 @@
 import "./style.css";
-
+import {
+  getUserName,
+  getUserMail,
+  getUserPhoto,
+} from "../firebase/firebase-config";
 const Profile = ({ showToolTip, setshowToolTip }) => {
   return (
     <div className="profile">
@@ -11,7 +15,7 @@ const Profile = ({ showToolTip, setshowToolTip }) => {
           setshowToolTip(true);
         }}
         className="user-photo"
-        src="assests/user-photo.png"
+        src={getUserPhoto()}
         alt=""
       />
       {showToolTip && (
@@ -20,10 +24,10 @@ const Profile = ({ showToolTip, setshowToolTip }) => {
           <div>Stats</div>
           <div>Settings</div>
           <div className="user-info">
-            <img className="user-photo" src="assests/user-photo.png" alt="" />
+            <img className="user-photo" src={getUserPhoto()} alt="" />
             <div>
-              <div className="name">Muthu Kumar</div>
-              <div className="email">m.m.muthu1388@gmail.com</div>
+              <div className="name">{getUserName()}</div>
+              <div className="email">{getUserMail()}</div>
             </div>
           </div>
         </div>
