@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { db } from "../firebase/firebase-config";
-
+import { isUserSignedIn } from "../firebase/firebase-config";
 const NewBlog = () => {
   const navigate = useNavigate();
   const [formObj, setFormObj] = useState({});
 
+  if (!isUserSignedIn()) return <Navigate to={"/"} />;
   function submitHandler(e) {
     e.preventDefault();
     saveBlog(formObj);

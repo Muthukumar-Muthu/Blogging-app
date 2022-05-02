@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 import Profile from "../profile/Profile";
 import ToolTip from "./ToolTip";
 import "./style.css";
-const LeftSideBar = ({ showToolTip, setshowToolTip, setUserLogged }) => {
+const LeftSideBar = ({ showToolTip, setshowToolTip }) => {
   return (
     <div className="sidebar">
       <img className="logo" src="\assests\logo.png" alt="blogger-logo" />
@@ -23,11 +23,7 @@ const LeftSideBar = ({ showToolTip, setshowToolTip, setUserLogged }) => {
           <ToolTip Children={FaEdit} text={"Edit"} />
         </Link>
       </div>
-      <Profile
-        setUserLogged={setUserLogged}
-        showToolTip={showToolTip}
-        setshowToolTip={setshowToolTip}
-      />
+      <Profile showToolTip={showToolTip} setshowToolTip={setshowToolTip} />
     </div>
   );
 };

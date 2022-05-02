@@ -2,8 +2,8 @@ import "./style.css";
 import { Login } from "../firebase/firebase-config";
 
 import { useNavigate } from "react-router-dom";
-import { getAuth } from "firebase/auth";
-const LandingPage = ({ setUserLogged }) => {
+
+const LandingPage = () => {
   const navigate = useNavigate();
   console.log("landing page");
   return (
@@ -11,8 +11,7 @@ const LandingPage = ({ setUserLogged }) => {
       <div
         onClick={() => {
           Login(() => {
-            setUserLogged(true);
-            navigate("/home");
+            navigate("/");
           });
         }}
         className="login-button"

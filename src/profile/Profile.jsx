@@ -28,8 +28,7 @@ const Profile = ({ showToolTip, setshowToolTip, setUserLogged }) => {
           <div
             onClick={() => {
               Logout(() => {
-                setUserLogged(true);
-                navigate("/");
+                navigate("/login");
               });
             }}
           >

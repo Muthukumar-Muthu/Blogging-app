@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { collection, query, onSnapshot, orderBy } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
@@ -9,10 +9,13 @@ import LeftSideBar from "../left-side-bar/LeftSideBar";
 import RightSideBar from "../right-side-bar/RightSideBar";
 import Blog from "../blog/Blog";
 import { db } from "../firebase/firebase-config";
-
-export default function Home({ userLogged, setUserLogged }) {
+import { isUserSignedIn } from "../firebase/firebase-config";
+export default function Home() {
   const [showToolTip, setshowToolTip] = useState(false);
+  const location = useLocation();
   const [blogs, setBlogs] = useState([]);
+  const userLogged = isUserSignedIn();
+  console.log(location.pathname);
 
   useEffect(() => {
     console.log(userLogged);
@@ -25,7 +28,9 @@ export default function Home({ userLogged, setUserLogged }) {
       }
       return unsub;
     }
-  }, [userLogged]);
+  }, []);
+
+  if (!userLogged) return <Navigate to={"/"} />;
 
   function getBlogs() {
     console.log("Getting Blogs");
@@ -49,17 +54,12 @@ export default function Home({ userLogged, setUserLogged }) {
     if (elementName !== "user-photo") setshowToolTip(false);
     console.log(elementName);
   }
-
   return (
     <div className="home" onClick={closeProfileToolTip}>
-      <LeftSideBar
-        setUserLogged={setUserLogged}
-        showToolTip={showToolTip}
-        setshowToolTip={setshowToolTip}
-      />
+      <LeftSideBar showToolTip={showToolTip} setshowToolTip={setshowToolTip} />
       <Routes>
-        <Route path="/" element={<BlogList blogs={blogs} />} />
         <Route path={`/blog/:blogId`} element={<Blog blogs={blogs} />} />
+        <Route path="/" element={<BlogList blogs={blogs} />} />
       </Routes>
       <RightSideBar />
     </div>

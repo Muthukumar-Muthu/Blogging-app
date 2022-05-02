@@ -32,6 +32,8 @@ const auth = getAuth(app);
 
 //login
 async function Login(fun = () => {}) {
+  console.log("logging in");
+
   try {
     const provider = new GoogleAuthProvider();
     await setPersistence(getAuth(app), browserSessionPersistence);
@@ -57,19 +59,15 @@ function isUserSignedIn() {
   return !!getAuth().currentUser;
 }
 function getUserId() {
-  if (!isUserSignedIn()) return;
   return getAuth().currentUser.uid;
 }
 function getUserName() {
-  if (!isUserSignedIn()) return;
   return getAuth().currentUser.displayName;
 }
 function getUserMail() {
-  if (!isUserSignedIn()) return;
   return getAuth().currentUser.email;
 }
 function getUserPhoto() {
-  if (!isUserSignedIn()) return;
   return getAuth().currentUser.photoURL || "assests/user-photo.png";
 }
 const userObj = getAuth().currentUser;
