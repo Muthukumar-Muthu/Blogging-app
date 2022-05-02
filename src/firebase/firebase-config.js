@@ -7,7 +7,6 @@ import {
   signInWithPopup,
   signOut,
   setPersistence,
-  browserLocalPersistence,
   browserSessionPersistence,
 } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";

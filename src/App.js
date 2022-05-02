@@ -1,15 +1,16 @@
-import { Route, Routes, Navigate, Outlet, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 import "./App.css";
 import LandingPage from "./landing-page/LandingPage";
 import Home from "./home/Home";
 import NewBlog from "./new-blog/NewBlog";
+import { isUserSignedIn } from "./firebase/firebase-config";
 
 function App() {
   const navigate = useNavigate();
-  console.log("app now");
+
   useEffect(() => {
     const unsub = onAuthStateChanged(getAuth(), (user) => {
       console.log("onauthstatechange", user);
@@ -23,11 +24,18 @@ function App() {
     <Routes>
       <Route path="/login" element={<LandingPage />} />
 
-      <Route path="/*" element={<Home />} />
+      <Route path="/*" element={<PrivateComponent render={<Home />} />} />
 
-      <Route path="/newblog" element={<NewBlog />} />
+      <Route
+        path="/newblog"
+        element={<PrivateComponent render={<NewBlog />} />}
+      />
     </Routes>
   );
 }
 
+function PrivateComponent({ render }) {
+  if (!isUserSignedIn()) return <Navigate to={"/login"} />;
+  return render;
+}
 export default App;

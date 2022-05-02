@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { collection, query, onSnapshot, orderBy } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
@@ -12,10 +12,9 @@ import { db } from "../firebase/firebase-config";
 import { isUserSignedIn } from "../firebase/firebase-config";
 export default function Home() {
   const [showToolTip, setshowToolTip] = useState(false);
-  const location = useLocation();
   const [blogs, setBlogs] = useState([]);
+
   const userLogged = isUserSignedIn();
-  console.log(location.pathname);
 
   useEffect(() => {
     console.log(userLogged);
@@ -29,8 +28,6 @@ export default function Home() {
       return unsub;
     }
   }, []);
-
-  if (!userLogged) return <Navigate to={"/"} />;
 
   function getBlogs() {
     console.log("Getting Blogs");

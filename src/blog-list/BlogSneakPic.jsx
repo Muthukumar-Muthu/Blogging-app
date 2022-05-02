@@ -1,7 +1,7 @@
 import { Timestamp } from "firebase/firestore";
 import moment from "moment";
-import { getAuth } from "firebase/auth";
 import { Link, useLocation } from "react-router-dom";
+
 import { getUserName } from "../firebase/firebase-config";
 
 function BlogSneakPic({ BlogObj }) {
