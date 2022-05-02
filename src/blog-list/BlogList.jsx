@@ -8,7 +8,7 @@ const BlogList = ({ blogs }) => {
   return (
     <section className="blog-list">
       <ul>
-        <Link to="/blog/new">
+        <Link to="/newblog">
           <li className="add-blog">Add new Blog +</li>
         </Link>
 

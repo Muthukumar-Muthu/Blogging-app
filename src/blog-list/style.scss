@@ -1,3 +1,9 @@
 .blog-list {
   margin-inline: 10em 5em;
 }
+.blog-sneak-pic {
+  margin-block: 1em;
+  > .flex {
+    align-items: center;
+  }
+}

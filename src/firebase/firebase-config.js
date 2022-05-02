@@ -8,6 +8,7 @@ import {
   signOut,
   setPersistence,
   browserLocalPersistence,
+  browserSessionPersistence,
 } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
@@ -33,9 +34,9 @@ const auth = getAuth(app);
 async function Login(fun = () => {}) {
   try {
     const provider = new GoogleAuthProvider();
-    await setPersistence(getAuth(app), browserLocalPersistence);
+    await setPersistence(getAuth(app), browserSessionPersistence);
     await signInWithPopup(getAuth(app), provider);
-    //console.log(fun);
+    console.log(fun);
     fun();
   } catch (error) {
     console.log(error);
@@ -43,11 +44,11 @@ async function Login(fun = () => {}) {
 }
 
 async function Logout(fun = () => {}) {
+  console.log("logging out");
+
   try {
-    await signOut(auth);
-    //console.log(fun);
+    console.log(await signOut(getAuth()));
     fun();
-    localStorage.setItem("userLogged", false);
   } catch (error) {
     console.log(error);
   }
@@ -56,15 +57,19 @@ function isUserSignedIn() {
   return !!getAuth().currentUser;
 }
 function getUserId() {
+  if (!isUserSignedIn()) return;
   return getAuth().currentUser.uid;
 }
 function getUserName() {
+  if (!isUserSignedIn()) return;
   return getAuth().currentUser.displayName;
 }
 function getUserMail() {
+  if (!isUserSignedIn()) return;
   return getAuth().currentUser.email;
 }
 function getUserPhoto() {
+  if (!isUserSignedIn()) return;
   return getAuth().currentUser.photoURL || "assests/user-photo.png";
 }
 const userObj = getAuth().currentUser;

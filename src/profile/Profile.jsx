@@ -3,8 +3,13 @@ import {
   getUserName,
   getUserMail,
   getUserPhoto,
+  Logout,
 } from "../firebase/firebase-config";
-const Profile = ({ showToolTip, setshowToolTip }) => {
+import { useNavigate } from "react-router-dom";
+const Profile = ({ showToolTip, setshowToolTip, setUserLogged }) => {
+  console.log("profile");
+
+  const navigate = useNavigate();
   return (
     <div className="profile">
       <img
@@ -20,7 +25,16 @@ const Profile = ({ showToolTip, setshowToolTip }) => {
       />
       {showToolTip && (
         <div className="profile-tooltip">
-          <div>Sign out</div>
+          <div
+            onClick={() => {
+              Logout(() => {
+                setUserLogged(true);
+                navigate("/");
+              });
+            }}
+          >
+            Sign out
+          </div>
           <div>Stats</div>
           <div>Settings</div>
           <div className="user-info">
