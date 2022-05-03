@@ -23,7 +23,7 @@ const LeftSideBar = ({ showToolTip, setshowToolTip }) => {
         <ToolTip Children={FaBell} text={"Notifications"} />
         <ToolTip Children={FaSave} text={"Lists"} />
         <ToolTip Children={FaDraftingCompass} text={"Drafts"} />
-        <Link className="icon" to="/blog/new">
+        <Link className="icon" to="/newblog">
           <ToolTip Children={FaEdit} text={"Edit"} />
         </Link>
       </div>

@@ -6,9 +6,12 @@ import {
   Logout,
 } from "../firebase/firebase-config";
 import { useNavigate } from "react-router-dom";
-const Profile = ({ showToolTip, setshowToolTip, position }) => {
-  console.log("profile");
+import { useContext } from "react";
 
+import { context } from "../context/ContextProvider";
+const Profile = ({ position }) => {
+  console.log("profile");
+  const { setshowToolTip, showToolTip } = useContext(context);
   const navigate = useNavigate();
   return (
     <div className="profile">

@@ -63,39 +63,7 @@ li > * {
   justify-content: space-between;
   align-items: center;
 }
-.form-wrapper {
-  display: grid;
-  place-items: center;
-  height: 100vh;
-  background-color: lightgray;
-  width: 100%;
-}
-.new-blog {
-  display: flex;
-  flex-direction: column;
-  margin: 1em;
-  min-width: 300px;
-  width: 85%;
-  max-width: 450px;
-}
-.new-blog > * {
-  margin-block: 2em;
-}
-.buttons {
-  display: flex;
-}
-button {
-  margin-inline: auto;
-  padding: 0.5em 1em;
-}
-#heading {
-  text-transform: capitalize;
-}
-form > #heading,
-form > #summary {
-  padding: 1em;
-  font-size: large;
-}
+
 .blog-sneak-pic > * {
   color: black;
 }

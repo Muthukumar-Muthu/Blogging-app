@@ -1,1 +1,98 @@
-/* No CSS *//*# sourceMappingURL=style.css.map */
+.form-wrapper {
+  height: 100vh;
+  background-color: lightgray;
+  width: 100%;
+}
+
+.new-blog {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 1em;
+  min-width: 300px;
+  width: 85%;
+  max-width: 450px;
+}
+
+.new-blog > * {
+  margin-block: 2em;
+}
+
+.buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+button {
+  margin-inline: auto;
+  padding: 0.5em 1em;
+}
+
+#heading {
+  text-transform: capitalize;
+}
+
+form > #heading,
+form > #summary {
+  padding: 1em;
+  font-size: large;
+}
+
+.header {
+  margin-inline: 5em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header .logo {
+  margin: 0;
+}
+
+.header > * {
+  cursor: pointer;
+  margin: 0.5em;
+  -webkit-margin-end: 0.5em;
+          margin-inline-end: 0.5em;
+}
+
+.header .icon {
+  font-size: xx-large;
+}
+
+.header .profile {
+  padding: 0;
+  margin: 0;
+  margin-block: auto !important;
+}
+
+.center {
+  margin-block: auto !important;
+}
+
+.publish {
+  margin-left: auto !important;
+  background-color: #1a8917;
+  color: white;
+  padding: 0.5em 0.75em;
+  border-radius: 10px;
+  border: none;
+  font-weight: bolder;
+}
+
+.publish:hover {
+  background-color: #0f730c;
+}
+
+.new-blog {
+  margin-inline: auto;
+}
+/*# sourceMappingURL=style.css.map */

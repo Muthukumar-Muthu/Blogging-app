@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { collection, query, onSnapshot, orderBy } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
+import { useContext } from "react";
 
 import "./style.css";
 import BlogList from "../blog-list/BlogList";
@@ -10,11 +11,13 @@ import RightSideBar from "../right-side-bar/RightSideBar";
 import Blog from "../blog/Blog";
 import { db } from "../firebase/firebase-config";
 import { isUserSignedIn } from "../firebase/firebase-config";
+import { context } from "../context/ContextProvider";
 export default function Home() {
-  const [showToolTip, setshowToolTip] = useState(false);
   const [blogs, setBlogs] = useState([]);
 
   const userLogged = isUserSignedIn();
+  const { closeProfileToolTip } = useContext(context);
+  console.log(closeProfileToolTip);
 
   useEffect(() => {
     console.log(userLogged);
@@ -46,14 +49,9 @@ export default function Home() {
     return q;
   }
 
-  function closeProfileToolTip(e) {
-    const elementName = e.target.className;
-    if (elementName !== "user-photo") setshowToolTip(false);
-    console.log(elementName);
-  }
   return (
     <div className="home" onClick={closeProfileToolTip}>
-      <LeftSideBar showToolTip={showToolTip} setshowToolTip={setshowToolTip} />
+      <LeftSideBar />
       <Routes>
         <Route path={`/blog/:blogId`} element={<Blog blogs={blogs} />} />
         <Route path="/" element={<BlogList blogs={blogs} />} />

@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { db } from "../firebase/firebase-config";
 
+import "./style.css";
+import { db } from "../firebase/firebase-config";
+import { context } from "../context/ContextProvider";
+import Header from "./Header";
 const NewBlog = () => {
+  const { closeProfileToolTip } = useContext(context);
   const navigate = useNavigate();
   const [formObj, setFormObj] = useState({});
 
@@ -40,7 +44,8 @@ const NewBlog = () => {
     navigate(-1);
   }
   return (
-    <div className="form-wrapper">
+    <div className="form-wrapper" onClick={closeProfileToolTip}>
+      <Header />
       <form className="new-blog" onSubmit={submitHandler}>
         <label htmlFor="heading">
           <h3>Your Blog:</h3>

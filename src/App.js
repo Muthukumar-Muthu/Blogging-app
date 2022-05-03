@@ -7,7 +7,7 @@ import LandingPage from "./landing-page/LandingPage";
 import Home from "./home/Home";
 import NewBlog from "./new-blog/NewBlog";
 import { isUserSignedIn } from "./firebase/firebase-config";
-
+import { ContextProvider } from "./context/ContextProvider";
 function App() {
   const navigate = useNavigate();
 
@@ -21,16 +21,18 @@ function App() {
   }, []);
 
   return (
-    <Routes>
-      <Route path="/login" element={<LandingPage />} />
+    <ContextProvider>
+      <Routes>
+        <Route path="/login" element={<LandingPage />} />
 
-      <Route path="/*" element={<PrivateComponent render={<Home />} />} />
+        <Route path="/*" element={<PrivateComponent render={<Home />} />} />
 
-      <Route
-        path="/newblog"
-        element={<PrivateComponent render={<NewBlog />} />}
-      />
-    </Routes>
+        <Route
+          path="/newblog"
+          element={<PrivateComponent render={<NewBlog />} />}
+        />
+      </Routes>
+    </ContextProvider>
   );
 }
 
