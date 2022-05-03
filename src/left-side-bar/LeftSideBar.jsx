@@ -13,9 +13,13 @@ import "./style.css";
 const LeftSideBar = ({ showToolTip, setshowToolTip }) => {
   return (
     <div className="sidebar">
-      <img className="logo" src="\assests\logo.png" alt="blogger-logo" />
+      <Link to={"/"}>
+        <img className="logo" src="\assests\logo.png" alt="blogger-logo" />
+      </Link>
       <div className="icons">
-        <ToolTip Children={FaHome} text={"Home"} />
+        <Link to={"/"}>
+          <ToolTip Children={FaHome} text={"Home"} />
+        </Link>
         <ToolTip Children={FaBell} text={"Notifications"} />
         <ToolTip Children={FaSave} text={"Lists"} />
         <ToolTip Children={FaDraftingCompass} text={"Drafts"} />
@@ -23,7 +27,11 @@ const LeftSideBar = ({ showToolTip, setshowToolTip }) => {
           <ToolTip Children={FaEdit} text={"Edit"} />
         </Link>
       </div>
-      <Profile showToolTip={showToolTip} setshowToolTip={setshowToolTip} />
+      <Profile
+        showToolTip={showToolTip}
+        position="right"
+        setshowToolTip={setshowToolTip}
+      />
     </div>
   );
 };

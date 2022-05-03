@@ -6,7 +6,7 @@ import {
   Logout,
 } from "../firebase/firebase-config";
 import { useNavigate } from "react-router-dom";
-const Profile = ({ showToolTip, setshowToolTip, setUserLogged }) => {
+const Profile = ({ showToolTip, setshowToolTip, position }) => {
   console.log("profile");
 
   const navigate = useNavigate();
@@ -24,7 +24,7 @@ const Profile = ({ showToolTip, setshowToolTip, setUserLogged }) => {
         alt=""
       />
       {showToolTip && (
-        <div className="profile-tooltip">
+        <div className={` profile-tooltip ${position || "right"}`}>
           <div
             onClick={() => {
               Logout(() => {

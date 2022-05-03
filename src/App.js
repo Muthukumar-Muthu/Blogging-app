@@ -16,7 +16,7 @@ function App() {
       console.log("onauthstatechange", user);
       if (!user) navigate("/login");
     });
-    navigate("/login");
+    // navigate("/login");
     return unsub;
   }, []);
 
