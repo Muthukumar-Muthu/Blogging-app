@@ -41,22 +41,6 @@ a {
   font-weight: bolder;
   font-size: larger;
 }
-li {
-  margin-block: 0.5em;
-  border: thin solid grey;
-  border-radius: 5px;
-  list-style: none;
-  word-wrap: break-word;
-  padding: 1em;
-}
-li > * {
-  margin-block-end: 0.5em;
-}
-.heading {
-  font-weight: bolder;
-  font-size: larger;
-}
-
 .flex {
   display: flex;
 

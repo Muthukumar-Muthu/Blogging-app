@@ -1,5 +1,4 @@
 import { createContext, useState } from "react";
-// import ReactHtmlParser from "react-html-parser";
 
 const context = createContext(null);
 const ContextProvider = ({ children }) => {
@@ -9,10 +8,7 @@ const ContextProvider = ({ children }) => {
     if (elementName !== "user-photo") setshowToolTip(false);
     console.log(elementName);
   }
-  // function toHtml() {
-  //   console.log(ReactHtmlParser(`<p>hi</p>`));
-  // }
-  // toHtml();
+
   return (
     <context.Provider
       value={{

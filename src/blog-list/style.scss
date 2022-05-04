@@ -7,3 +7,21 @@
     align-items: center;
   }
 }
+li {
+  margin-block: 0.5em;
+  border: thin solid grey;
+  border-radius: 5px;
+  list-style: none;
+  word-wrap: break-word;
+  padding: 1em;
+}
+li > * {
+  margin-block-end: 20px;
+}
+.heading {
+  font-weight: bolder;
+  font-size: larger;
+}
+.summary * {
+  margin-block: 0.2em;
+}

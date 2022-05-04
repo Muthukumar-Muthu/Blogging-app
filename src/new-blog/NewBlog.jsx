@@ -1,6 +1,5 @@
 import { useState, useContext } from "react";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
 import "./style.css";
@@ -15,8 +14,6 @@ const NewBlog = () => {
   const [blogContent, setBlogContent] = useState({});
 
   function submitHandler(e) {
-    console.log("submitted");
-
     e.preventDefault();
     saveBlog({ ...formObj, blogContent: JSON.stringify(blogContent) });
     navigate("/");

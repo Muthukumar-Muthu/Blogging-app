@@ -5,6 +5,7 @@ import { getAuth } from "firebase/auth";
 import { useContext } from "react";
 import { generateHTML } from "@tiptap/core";
 import StarterKit from "@tiptap/starter-kit";
+import parse from "html-react-parser";
 
 import "./style.css";
 import BlogList from "../blog-list/BlogList";
@@ -65,9 +66,18 @@ export default function Home() {
 function fixBlogObj(obj) {
   const { blogContent } = obj;
   const blogContentObj = JSON.parse(blogContent);
-  const html = generateHTML(blogContentObj, [StarterKit]);
-  console.log(typeof html);
-
+  const string = generateHTML(blogContentObj, [StarterKit]);
+  const html = stringToHtml(string);
   obj.blogContent = html;
   return obj;
+}
+function stringToHtml(string) {
+  const options = {
+    replace: (domNode) => {
+      if (domNode.attribs && domNode.attribs.class === "remove") {
+        return <></>;
+      }
+    },
+  };
+  return parse(string, options);
 }
