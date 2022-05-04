@@ -2,8 +2,10 @@
   //   display: grid;
   //   place-items: center;
   height: 100vh;
-  background-color: lightgray;
-  width: 100%;
+
+  display: block;
+}
+input {
 }
 .new-blog {
   display: flex;
@@ -56,7 +58,6 @@ form > #summary {
   margin-block: auto !important;
 }
 .publish {
-  margin-left: auto !important;
   background-color: #1a8917;
   color: white;
   padding: 0.5em 0.75em;
@@ -69,4 +70,16 @@ form > #summary {
 }
 .new-blog {
   margin-inline: auto;
+}
+.cancel {
+  margin-left: auto;
+  background-color: #cf1818;
+  color: white;
+  padding: 0.5em 0.75em;
+  border-radius: 10px;
+  border: none;
+  font-weight: bolder;
+}
+.cancel:hover {
+  background-color: #a01212;
 }

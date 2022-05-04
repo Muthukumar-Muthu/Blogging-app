@@ -8,7 +8,8 @@ const Blog = ({ blogs }) => {
   const { blogId } = useParams();
   const blogObj = blogs.filter((blog) => blog.id === blogId)[0];
 
-  const { heading, summary, timeStamp, name } = blogObj;
+  const { heading, blogContent, timeStamp, name } = blogObj;
+
   let date = "";
   if (timeStamp) {
     const time = new Timestamp(timeStamp.seconds, timeStamp.nanoseconds);
@@ -22,9 +23,9 @@ const Blog = ({ blogs }) => {
     <div className="blog-wrapper">
       <div className="blog">
         <h2 className="heading">{heading}</h2>
-        <p className="summary">{summary}</p>
+        <p className="summary">{blogContent}</p>
         <div className="flex">
-          <h4 className="author">{name || "loading..."}</h4>
+          <h4 className="author">{name}</h4>
           <h6 className="time">{date}</h6>
         </div>
       </div>

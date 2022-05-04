@@ -2,13 +2,8 @@ import { Timestamp } from "firebase/firestore";
 import moment from "moment";
 import { Link, useLocation } from "react-router-dom";
 
-import { getUserName } from "../firebase/firebase-config";
-
 function BlogSneakPic({ BlogObj }) {
-  const location = useLocation();
-  console.log(location.pathname);
-
-  const { heading, summary, timeStamp } = BlogObj;
+  const { heading, blogContent, timeStamp, name } = BlogObj;
   const id = BlogObj.id;
 
   let date = "";
@@ -24,9 +19,9 @@ function BlogSneakPic({ BlogObj }) {
     <Link className="blog-sneak-pic" to={`/blog/${id}`}>
       <li className="blog-sneak-pic">
         <h2 className="heading">{heading}</h2>
-        <p className="summary">{summary.slice(0, 50)}</p>
+        <p className="summary">{blogContent}</p>
         <div className="flex">
-          <h4 className="author">{getUserName()}</h4>
+          <h4 className="author">{name}</h4>
           <h6 className="time">{date}</h6>
         </div>
       </li>

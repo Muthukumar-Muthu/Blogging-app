@@ -4,32 +4,36 @@ import { getAuth } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
 import "./style.css";
-import { db } from "../firebase/firebase-config";
+import { db, getUserId, getUserName } from "../firebase/firebase-config";
 import { context } from "../context/ContextProvider";
 import Header from "./Header";
+import Editor from "./editor/Editor";
 const NewBlog = () => {
   const { closeProfileToolTip } = useContext(context);
   const navigate = useNavigate();
   const [formObj, setFormObj] = useState({});
+  const [blogContent, setBlogContent] = useState({});
 
   function submitHandler(e) {
+    console.log("submitted");
+
     e.preventDefault();
-    saveBlog(formObj);
-    navigate("/home");
+    saveBlog({ ...formObj, blogContent: JSON.stringify(blogContent) });
+    navigate("/");
   }
   async function saveBlog(obj) {
-    const captilizedHeading =
-      obj.heading.slice(0, 1).toUpperCase() + obj.heading.slice(1);
     try {
-      const userId = getAuth().currentUser.uid;
-      await addDoc(collection(db, `users/${userId}/blogs`), {
+      const userId = getUserId();
+      const saveObj = {
         ...obj,
-        heading: captilizedHeading,
+        heading: obj.heading.slice(0, 1).toUpperCase() + obj.heading.slice(1),
+        name: getUserName(),
         timeStamp: serverTimestamp(),
-        name: getAuth().currentUser.displayName,
-      });
+      };
+      // console.log(saveObj, userId);
+      await addDoc(collection(db, `users/${userId}/blogs`), saveObj);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   }
   function changeHandler(e) {
@@ -40,17 +44,29 @@ const NewBlog = () => {
       };
     });
   }
-  function goBack() {
-    navigate(-1);
-  }
+
   return (
     <div className="form-wrapper" onClick={closeProfileToolTip}>
-      <Header />
-      <form className="new-blog" onSubmit={submitHandler}>
+      <Header submitHandler={submitHandler} />
+      <div
+        style={{
+          display: "flex",
+          margin: "2em",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <label htmlFor="heading">
-          <h3>Your Blog:</h3>
+          <h3>Blog Heading:</h3>
         </label>
         <input
+          style={{
+            marginInline: "2em",
+            padding: "1em",
+            minWidth: "300px",
+            border: "thin solid lightgrey",
+            width: "75%",
+          }}
           onChange={changeHandler}
           type="text"
           name="heading"
@@ -60,26 +76,10 @@ const NewBlog = () => {
           autoComplete="false"
           spellCheck="false"
         />
-        <textarea
-          onChange={changeHandler}
-          name="summary"
-          value={formObj.summary || ""}
-          id="summary"
-          cols="30"
-          rows="10"
-          placeholder="Blog's summary"
-          autoComplete="false"
-          spellCheck="false"
-        ></textarea>
-        <div className="buttons">
-          <button type="submit" onClick={submitHandler}>
-            Submit Blog
-          </button>
-        </div>
-      </form>
-      <button className="cancel" onClick={goBack}>
-        Go back
-      </button>
+      </div>
+      <hr />
+      <h2 style={{ textAlign: "center", marginTop: "1em" }}>Blog's Content</h2>
+      <Editor setBlogContent={setBlogContent} />
     </div>
   );
 };

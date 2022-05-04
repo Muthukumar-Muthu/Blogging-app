@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { collection, query, onSnapshot, orderBy } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { useContext } from "react";
+import { generateHTML } from "@tiptap/core";
+import StarterKit from "@tiptap/starter-kit";
 
 import "./style.css";
 import BlogList from "../blog-list/BlogList";
@@ -41,8 +43,8 @@ export default function Home() {
     const q = onSnapshot(blogsQuery, function (snapshot) {
       let blogsArray = [];
       snapshot.docs.forEach((doc) => {
-        console.log(doc.data());
-        blogsArray.push({ id: doc.id, ...doc.data() });
+        const obj = fixBlogObj(doc.data());
+        blogsArray.push({ id: doc.id, ...obj });
       });
       setBlogs(blogsArray);
     });
@@ -59,4 +61,13 @@ export default function Home() {
       <RightSideBar />
     </div>
   );
+}
+function fixBlogObj(obj) {
+  const { blogContent } = obj;
+  const blogContentObj = JSON.parse(blogContent);
+  const html = generateHTML(blogContentObj, [StarterKit]);
+  console.log(typeof html);
+
+  obj.blogContent = html;
+  return obj;
 }
