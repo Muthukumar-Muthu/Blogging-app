@@ -58,16 +58,16 @@ function isUserSignedIn() {
   return !!getAuth().currentUser;
 }
 function getUserId() {
-  return getAuth().currentUser.uid;
+  return getAuth().currentUser?.uid;
 }
 function getUserName() {
-  return getAuth().currentUser.displayName;
+  return getAuth().currentUser?.displayName;
 }
 function getUserMail() {
-  return getAuth().currentUser.email;
+  return getAuth().currentUser?.email;
 }
 function getUserPhoto() {
-  return getAuth().currentUser.photoURL || "assests/user-photo.png";
+  return getAuth().currentUser?.photoURL || "assests/user-photo.png";
 }
 const userObj = getAuth().currentUser;
 const db = getFirestore();

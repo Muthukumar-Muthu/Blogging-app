@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { collection, query, onSnapshot, orderBy } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
@@ -13,18 +13,16 @@ import LeftSideBar from "../left-side-bar/LeftSideBar";
 import RightSideBar from "../right-side-bar/RightSideBar";
 import Blog from "../blog/Blog";
 import { db } from "../firebase/firebase-config";
-import { isUserSignedIn } from "../firebase/firebase-config";
 import { context } from "../context/ContextProvider";
+
 export default function Home() {
   const [blogs, setBlogs] = useState([]);
-
-  const userLogged = isUserSignedIn();
-  const { closeProfileToolTip } = useContext(context);
-  console.log(closeProfileToolTip);
+  const { closeProfileToolTip, user, startUp } = useContext(context);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(userLogged);
-    if (userLogged) {
+    console.log(user);
+    if (user) {
       let unsub = 0;
       try {
         unsub = getBlogs();
@@ -33,7 +31,18 @@ export default function Home() {
       }
       return unsub;
     }
+  }, [user]);
+
+  useEffect(() => {
+    startUp();
   }, []);
+
+  useEffect(() => {
+    if (!user) {
+      console.log("user not logged returning to login page");
+      return navigate("/login");
+    }
+  }, [user]);
 
   function getBlogs() {
     console.log("Getting Blogs");
