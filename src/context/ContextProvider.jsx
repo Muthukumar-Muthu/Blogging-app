@@ -1,11 +1,11 @@
 import { createContext, useRef, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 const context = createContext(null);
 const ContextProvider = ({ children }) => {
   const [showToolTip, setshowToolTip] = useState(false);
   const [user, setUser] = useState(false);
   const locationRef = useRef("/login");
-
+  const navigate = useNavigate();
   let location = useLocation();
   function closeProfileToolTip(e) {
     const elementName = e.target.className;
@@ -25,6 +25,7 @@ const ContextProvider = ({ children }) => {
         setUser,
         locationRef,
         startUp,
+        navigate,
       }}
     >
       {children}

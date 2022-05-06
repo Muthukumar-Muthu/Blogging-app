@@ -42,7 +42,17 @@ function App() {
 }
 
 function PrivateComponent({ render }) {
-  //if (!isUserSignedIn()) return <Navigate to={"/login"} />;
+  const { startUp, user, navigate } = useContext(context);
+  useEffect(() => {
+    startUp();
+  }, []);
+  useEffect(() => {
+    if (!user) {
+      console.log("user not logged returning to login page");
+      return navigate("/login");
+    }
+  }, [user]);
+
   return render;
 }
 export default App;

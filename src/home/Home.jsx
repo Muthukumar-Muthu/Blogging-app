@@ -33,17 +33,6 @@ export default function Home() {
     }
   }, [user]);
 
-  useEffect(() => {
-    startUp();
-  }, []);
-
-  useEffect(() => {
-    if (!user) {
-      console.log("user not logged returning to login page");
-      return navigate("/login");
-    }
-  }, [user]);
-
   function getBlogs() {
     console.log("Getting Blogs");
     const blogsQuery = query(

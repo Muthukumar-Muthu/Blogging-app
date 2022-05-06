@@ -10,16 +10,16 @@ const Blog = ({ blogs }) => {
   const { user, startUp } = useContext(context);
   const navigate = useNavigate();
   const blogObj = blogs.filter((blog) => blog.id === blogId)[0];
-  useEffect(() => {
-    if (!user) {
-      console.log("user not logged returning to login page");
-      return navigate("/login");
-    }
-  }, [user]);
+  // useEffect(() => {
+  //   if (!user) {
+  //     console.log("user not logged returning to login page");
+  //     return navigate("/login");
+  //   }
+  // }, [user]);
 
-  useEffect(() => {
-    startUp();
-  }, []);
+  // useEffect(() => {
+  //   startUp();
+  // }, []);
 
   if (!blogObj) return <></>;
 
