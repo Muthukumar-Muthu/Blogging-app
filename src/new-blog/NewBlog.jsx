@@ -70,7 +70,7 @@ const NewBlog = () => {
           id="heading"
           value={formObj.heading || ""}
           placeholder="Blog's heading"
-          autoComplete="false"
+          autoComplete="off"
           spellCheck="false"
         />
       </div>

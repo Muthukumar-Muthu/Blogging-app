@@ -10,9 +10,10 @@ import { useContext } from "react";
 
 import { context } from "../context/ContextProvider";
 const Profile = ({ position }) => {
-  console.log("profile");
   const { setshowToolTip, showToolTip } = useContext(context);
   const navigate = useNavigate();
+  console.log(showToolTip);
+
   return (
     <div className="profile">
       <img

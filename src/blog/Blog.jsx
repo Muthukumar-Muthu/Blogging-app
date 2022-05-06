@@ -1,14 +1,36 @@
 import { Timestamp } from "firebase/firestore";
 import moment from "moment";
-
+import { getDoc, doc } from "firebase/firestore";
 import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { generateHTML } from "@tiptap/core";
+import StarterKit from "@tiptap/starter-kit";
+import parse from "html-react-parser";
+import _ from "lodash";
 
 import "./style.css";
-const Blog = ({ blogs }) => {
-  const { blogId } = useParams();
-  const blogObj = blogs.filter((blog) => blog.id === blogId)[0];
+import { db } from "../firebase/firebase-config";
 
-  const { heading, blogContent, timeStamp, name } = blogObj;
+const Blog = () => {
+  const { blogId, userId } = useParams();
+  const [blogObj, setBlogObj] = useState(null);
+
+  async function getBlog() {
+    try {
+      const blog = await getDoc(doc(db, `users/${userId}/blogs/${blogId}`));
+      setBlogObj(fixBlogObj(blog.data()));
+    } catch (error) {
+      console.warn(error);
+    }
+  }
+
+  useEffect(() => {
+    getBlog();
+  }, []);
+
+  if (!blogObj) return <></>; //TODO: warn user about unavaiablity of blog
+
+  let { heading, blogContent, timeStamp, name } = blogObj;
 
   let date = "";
   if (timeStamp) {
@@ -32,4 +54,23 @@ const Blog = ({ blogs }) => {
     </div>
   );
 };
+function fixBlogObj(blogObj) {
+  const obj = _.cloneDeep(blogObj);
+  const { blogContent } = obj;
+  const blogContentObj = JSON.parse(blogContent);
+  const string = generateHTML(blogContentObj, [StarterKit]);
+  const html = stringToHtml(string);
+  obj.blogContent = html;
+  return obj;
+}
+function stringToHtml(string) {
+  const options = {
+    replace: (domNode) => {
+      if (domNode.attribs && domNode.attribs.class === "remove") {
+        return <></>;
+      }
+    },
+  };
+  return parse(string, options);
+}
 export default Blog;
