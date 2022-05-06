@@ -1,9 +1,17 @@
-.right-side-bar {
+.right-side-bar-wrapper {
   border-left: thin solid lightgray;
+  position: fixed;
+  top: 0;
+  right: 0;
   overflow-y: scroll;
   margin: 0;
-  padding: 1em;
   width: 60%;
+  height: 100%;
   max-width: 450px;
+}
+
+.right-side-bar {
+  height: 100%;
+  padding: 1em;
 }
 /*# sourceMappingURL=style.css.map */

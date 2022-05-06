@@ -17,8 +17,7 @@ import { context } from "../context/ContextProvider";
 
 export default function Home() {
   const [blogs, setBlogs] = useState([]);
-  const { closeProfileToolTip, user, startUp } = useContext(context);
-  const navigate = useNavigate();
+  const { closeProfileToolTip, user } = useContext(context);
 
   useEffect(() => {
     console.log(user);
@@ -54,7 +53,10 @@ export default function Home() {
     <div className="home" onClick={closeProfileToolTip}>
       <LeftSideBar />
       <Routes>
-        <Route path={`/blog/:blogId`} element={<Blog blogs={blogs} />} />
+        <Route
+          path={`/blog/:userId/:blogId`}
+          element={<Blog blogs={blogs} />}
+        />
         <Route path="/" element={<BlogList blogs={blogs} />} />
       </Routes>
       <RightSideBar />
