@@ -2,7 +2,7 @@ import { Timestamp } from "firebase/firestore";
 import moment from "moment";
 import { Link } from "react-router-dom";
 import { getUserId } from "../firebase/firebase-config";
-
+import trimSummary from "../utils/margins";
 function BlogSneakPic({ BlogObj }) {
   const { heading, blogContent, timeStamp, name } = BlogObj;
   const blogId = BlogObj.id;
@@ -15,7 +15,8 @@ function BlogSneakPic({ BlogObj }) {
   } else {
     date = moment(new Date()).format("LLL");
   }
-
+  //TODO: show only few lines for content
+  //TODO: make sneak pic same as medium.com
   return (
     <Link className="blog-sneak-pic" to={`/blog/${getUserId()}/${blogId}`}>
       <li className="blog-sneak-pic">

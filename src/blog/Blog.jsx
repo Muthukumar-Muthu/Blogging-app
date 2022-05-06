@@ -8,13 +8,14 @@ import StarterKit from "@tiptap/starter-kit";
 import parse from "html-react-parser";
 import _ from "lodash";
 
+import getMargin from "../utils/margins";
 import "./style.css";
 import { db } from "../firebase/firebase-config";
 
 const Blog = () => {
   const { blogId, userId } = useParams();
   const [blogObj, setBlogObj] = useState(null);
-
+  const { leftMargin, rightMargin } = getMargin();
   async function getBlog() {
     try {
       const blog = await getDoc(doc(db, `users/${userId}/blogs/${blogId}`));
@@ -42,7 +43,12 @@ const Blog = () => {
   }
 
   return (
-    <div className="blog-wrapper">
+    <div
+      className="blog-wrapper"
+      style={{
+        marginInline: `${leftMargin + 5}px ${rightMargin + 5}px`,
+      }}
+    >
       <div className="blog">
         <h2 className="heading">{heading}</h2>
         <p className="summary">{blogContent}</p>

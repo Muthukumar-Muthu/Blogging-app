@@ -4,8 +4,9 @@ import {
   getUserMail,
   getUserPhoto,
   Logout,
+  getUserId,
 } from "../firebase/firebase-config";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 
 import { context } from "../context/ContextProvider";
@@ -43,8 +44,10 @@ const Profile = ({ position }) => {
           <div className="user-info">
             <img className="user-photo" src={getUserPhoto()} alt="" />
             <div>
-              <div className="name">{getUserName()}</div>
-              <div className="email">{getUserMail()}</div>
+              <Link to={`/${getUserId()}`}>
+                <div className="name">{getUserName()}</div>
+                <div className="email">{getUserMail()}</div>
+              </Link>
             </div>
           </div>
         </div>

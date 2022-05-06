@@ -89,6 +89,7 @@ button {
 .editor {
   margin-top: 2em;
   margin-inline: auto;
+  padding: 1em;
 }
 
 .is-active {

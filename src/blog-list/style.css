@@ -1,5 +1,6 @@
 .blog-list {
-  margin-inline: 10em 5em;
+  margin-inline: auto;
+  z-index: 0;
 }
 
 .blog-sneak-pic {

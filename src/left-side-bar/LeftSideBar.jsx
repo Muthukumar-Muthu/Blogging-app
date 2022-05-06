@@ -12,7 +12,7 @@ import ToolTip from "./ToolTip";
 import "./style.css";
 const LeftSideBar = ({ showToolTip, setshowToolTip }) => {
   return (
-    <div className="sidebar">
+    <div className="sidebar leftsidebar">
       <Link to={"/"}>
         <img className="logo" src="\assests\logo.png" alt="blogger-logo" />
       </Link>

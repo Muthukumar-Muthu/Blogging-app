@@ -81,6 +81,10 @@ button {
 .editor {
   margin-top: 2em;
   margin-inline: auto;
+  padding: 1em;
+  // display: flex;
+  // align-items: center;
+  // flex-wrap: wrap;
 }
 .is-active {
   color: white;
