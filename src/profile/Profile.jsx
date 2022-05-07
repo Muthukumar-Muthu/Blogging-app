@@ -42,13 +42,26 @@ const Profile = ({ position }) => {
           <div>Stats</div>
           <div>Settings</div>
           <div className="user-info">
-            <img className="user-photo" src={getUserPhoto()} alt="" />
-            <div>
-              <Link to={`/${getUserId()}`}>
+            <Link
+              style={{
+                display: "flex",
+
+                justifyContent: "center",
+              }}
+              to={`/${getUserId()}`}
+            >
+              <img className="user-photo" src={getUserPhoto()} alt="" />
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                }}
+              >
                 <div className="name">{getUserName()}</div>
                 <div className="email">{getUserMail()}</div>
-              </Link>
-            </div>
+              </div>
+            </Link>
           </div>
         </div>
       )}
