@@ -1,5 +1,7 @@
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { useState, useEffect } from "react";
+
+import captilize from "../../utils/captilize";
 import { db, getUserId } from "../../firebase/firebase-config";
 
 const Bio = () => {
@@ -14,21 +16,17 @@ const Bio = () => {
   }
   async function getBioDb() {
     try {
-      console.log("getting Bio");
-
       const bioDoc = await getDoc(doc(db, `users/${getUserId()}/`));
-      const {
-        profile: { bio },
-      } = bioDoc.data();
-
-      setBio(bio);
+      const { bio } = bioDoc.data();
+      !bio ? setBio("") : setBio(bio);
     } catch (error) {
       console.error(error);
     }
   }
   async function setBioDb() {
+    const formatted = captilize(bio);
     try {
-      await setDoc(doc(db, `users/${getUserId()}/`), { bio });
+      await setDoc(doc(db, `users/${getUserId()}/`), { bio: formatted });
     } catch (error) {
       console.warn(error);
     }
