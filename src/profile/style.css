@@ -8,6 +8,11 @@
   margin-bottom: 2em;
 }
 
+.profile a {
+  font-weight: normal !important;
+  font-size: small !important;
+}
+
 .user-photo {
   width: 35px;
   border-radius: 50%;
@@ -39,13 +44,8 @@
   margin: 1em;
 }
 
-.profile-tooltip .user-info > div {
-  margin-block: auto;
+.profile-tooltip .user-info div {
   margin-inline: 1em;
-}
-
-.profile-tooltip .user-info > div > div {
-  margin-block: 0.5em;
 }
 
 .right {

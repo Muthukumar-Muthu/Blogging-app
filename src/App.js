@@ -7,6 +7,8 @@ import LandingPage from "./landing-page/LandingPage";
 import Home from "./home/Home";
 import NewBlog from "./new-blog/NewBlog";
 import { context } from "./context/ContextProvider";
+import ProfilePage from "./profile-page/ProfilePage";
+
 function App() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -36,6 +38,10 @@ function App() {
       <Route
         path="/newblog"
         element={<PrivateComponent render={<NewBlog />} />}
+      />
+      <Route
+        element={<PrivateComponent render={<ProfilePage />} />}
+        path="/profile"
       />
     </Routes>
   );
