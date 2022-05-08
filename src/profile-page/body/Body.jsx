@@ -1,10 +1,18 @@
+import { Link } from "react-router-dom";
 import "./style.css";
-import { getUserPhoto } from "../../firebase/firebase-config";
+import {
+  getUserPhoto,
+  getUserId,
+  getUserName,
+} from "../../firebase/firebase-config";
+import Bio from "./Bio";
+
 const Body = () => {
+  let domain = window.location.hostname;
+
   return (
     <div className="body">
       <h2>About You</h2>
-
       <div className="flex-row">
         <div className="left">
           <h3>Name</h3>
@@ -15,32 +23,8 @@ const Body = () => {
             value={"Muthukumar M"}
           />
         </div>
-        <div className="">
-          <button>save</button>
-          <button>edit</button>
-        </div>
       </div>
-      <div className="flex-row">
-        <div
-          style={{
-            width: "70%",
-          }}
-          className="left"
-        >
-          <h3>Short Bio</h3>
-          <p className="input" contentEditable="true" spellCheck="false">
-            Muthu kumar M Lorem ipsum dolor sit amet, consectetur
-            adipisicingelit. Provident solutaecati veritatis sed nesciunt
-            deserunt repellat qui quasi?
-          </p>
-        </div>
-        <div>
-          <div>
-            <button>save</button>
-            <button>edit</button>
-          </div>
-        </div>
-      </div>
+      <Bio />
 
       <div className="flex-row">
         <div className="left">
@@ -49,21 +33,29 @@ const Body = () => {
             <img src={getUserPhoto()} alt="" />
           </div>
         </div>
-        <div>
-          <button>save</button>
-          <button>edit</button>
-        </div>
       </div>
       <div>
         <h3>Username & URL</h3>
         <div>
           <div className="user-name">
             <h3>Username</h3>
-            <span>Muthu kumar M</span>
+            <span>{getUserName()}</span>
           </div>
           <div className="url">
-            <h3>URL</h3>
-            <span>Muthu kumar M</span>
+            <h3>Profile URL</h3>
+            <span>
+              <Link
+                style={{
+                  textDecoration: "underline",
+                  fontSize: "medium",
+                  fontWeight: "normal",
+                }}
+                target={"_blank"}
+                to={`/user/${getUserId()}`}
+              >
+                {`${domain}/user/${getUserId()}`}
+              </Link>
+            </span>
           </div>
         </div>
       </div>
