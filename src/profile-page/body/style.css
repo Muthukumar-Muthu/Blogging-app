@@ -1,4 +1,85 @@
 .body {
-  border: thin solid red;
+  margin-top: 2em;
+  width: 60%;
+  margin-inline: auto;
+}
+
+.body .flex-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: stretch;
+      -ms-flex-pack: stretch;
+          justify-content: stretch;
+  border-bottom: thin solid lightgrey;
+}
+
+.body .right {
+  margin-left: auto;
+}
+
+.body .left {
+  margin-right: auto;
+}
+
+.body h2 {
+  -webkit-padding-after: 0.6em;
+          padding-block-end: 0.6em;
+  border-bottom: thin solid lightgrey;
+}
+
+.body h3 {
+  -webkit-margin-after: 0.5em;
+          margin-block-end: 0.5em;
+}
+
+.body img {
+  border-radius: 10px;
+}
+
+.body > div {
+  margin-block: 2em;
+}
+
+.body input,
+.body .input,
+.body .user-image {
+  padding: 0.5em 0.2em;
+  font-size: large;
+  width: 100%;
+  border: none;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+.body .input {
+  width: 75%;
+  font-size: medium;
+}
+
+.body input:focus-visible,
+.body input:active,
+.body input:focus {
+  border: none;
+}
+
+.body .user-name,
+.body .url {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-block: 0.25em;
+}
+
+.body .user-name h3,
+.body .url h3 {
+  width: 110px;
+}
+
+.body .user-name > *,
+.body .url > * {
+  margin-block: auto;
 }
 /*# sourceMappingURL=style.css.map */

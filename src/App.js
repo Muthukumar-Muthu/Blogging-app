@@ -41,7 +41,7 @@ function App() {
       />
       <Route
         element={<PrivateComponent render={<ProfilePage />} />}
-        path="/:userId"
+        path="/profile"
       />
     </Routes>
   );

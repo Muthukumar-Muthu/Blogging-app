@@ -48,7 +48,7 @@ const Profile = ({ position }) => {
 
                 justifyContent: "center",
               }}
-              to={`/${getUserId()}`}
+              to={`/profile`}
             >
               <img className="user-photo" src={getUserPhoto()} alt="" />
               <div
