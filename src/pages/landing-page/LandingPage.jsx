@@ -1,5 +1,5 @@
 import "./style.css";
-import { Login } from "../firebase/firebase-config";
+import { Login } from "../../firebase/authentication/userDetails";
 
 import { useNavigate } from "react-router-dom";
 

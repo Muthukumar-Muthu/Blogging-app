@@ -8,7 +8,7 @@ import {
 import { Link } from "react-router-dom";
 
 import Profile from "../profile/Profile";
-import ToolTip from "./ToolTip";
+import ToolTip from "../../hoc/ToolTip";
 import "./style.css";
 const LeftSideBar = ({ showToolTip, setshowToolTip }) => {
   return (

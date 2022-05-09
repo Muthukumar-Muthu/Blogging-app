@@ -1,8 +1,8 @@
 import { Timestamp } from "firebase/firestore";
 import moment from "moment";
 import { Link } from "react-router-dom";
-import { getUserId } from "../firebase/firebase-config";
-import trimSummary from "../utils/margins";
+import { getUserId } from "../../firebase/authentication/userDetails";
+
 function BlogSneakPic({ BlogObj }) {
   const { heading, blogContent, timeStamp, name } = BlogObj;
   const blogId = BlogObj.id;

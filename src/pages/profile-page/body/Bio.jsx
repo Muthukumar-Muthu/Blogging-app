@@ -1,8 +1,9 @@
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { useState, useEffect } from "react";
 
-import captilize from "../../utils/captilize";
-import { db, getUserId } from "../../firebase/firebase-config";
+import captilize from "../../../functions/captilize";
+import { getUserId } from "../../../firebase/authentication/userDetails";
+import { db } from "../../../firebase/configuration/firebase-config";
 
 const Bio = () => {
   const [edit, setEdit] = useState(false);

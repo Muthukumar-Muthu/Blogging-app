@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import "./style.css";
 import BlogSneakPic from "./BlogSneakPic";
-import getMargin from "../utils/margins";
+import getMargin from "../../functions/margins";
 
 const BlogList = ({ blogs }) => {
   console.log("blog-list", blogs);
