@@ -1,6 +1,6 @@
 import { FaGripVertical, FaBell } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import Profile from "../profile/Profile";
+import Profile from "../../../components/profile/Profile";
 
 const Header = ({ submitHandler }) => {
   const navigate = useNavigate();

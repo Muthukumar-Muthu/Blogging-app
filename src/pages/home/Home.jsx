@@ -1,20 +1,17 @@
-import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { collection, query, onSnapshot, orderBy } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { useContext } from "react";
-import { generateHTML } from "@tiptap/core";
-import StarterKit from "@tiptap/starter-kit";
-import parse from "html-react-parser";
 
 import "./style.css";
-import BlogList from "../blog-list/BlogList";
-import LeftSideBar from "../left-side-bar/LeftSideBar";
-import RightSideBar from "../right-side-bar/RightSideBar";
+import BlogList from "../../components/blog-list/BlogList";
+import LeftSideBar from "../../components/left-side-bar/LeftSideBar";
+import RightSideBar from "../../components/right-side-bar/RightSideBar";
 import Blog from "../blog/Blog";
-import { db } from "../firebase/firebase-config";
-import { context } from "../context/ContextProvider";
-
+import { db } from "../../firebase/configuration/firebase-config";
+import { context } from "../../context/ContextProvider";
+import fixBlogObj from "../../functions/formatHtml";
 export default function Home() {
   const [blogs, setBlogs] = useState([]);
   const { closeProfileToolTip, user } = useContext(context);
@@ -62,22 +59,4 @@ export default function Home() {
       <RightSideBar />
     </div>
   );
-}
-function fixBlogObj(obj) {
-  const { blogContent } = obj;
-  const blogContentObj = JSON.parse(blogContent);
-  const string = generateHTML(blogContentObj, [StarterKit]);
-  const html = stringToHtml(string);
-  obj.blogContent = html;
-  return obj;
-}
-function stringToHtml(string) {
-  const options = {
-    replace: (domNode) => {
-      if (domNode.attribs && domNode.attribs.class === "remove") {
-        return <></>;
-      }
-    },
-  };
-  return parse(string, options);
 }

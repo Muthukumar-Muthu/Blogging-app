@@ -5,7 +5,7 @@ import {
   getUserPhoto,
   getUserId,
   getUserName,
-} from "../../firebase/firebase-config";
+} from "../../../firebase/authentication/userDetails";
 import Bio from "./Bio";
 
 const Body = () => {

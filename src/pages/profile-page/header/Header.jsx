@@ -1,6 +1,6 @@
 import { FaGripVertical, FaBell } from "react-icons/fa";
 
-import Profile from "../../profile/Profile";
+import Profile from "../../../components/profile/Profile";
 import "./style.css";
 
 const Header = () => {

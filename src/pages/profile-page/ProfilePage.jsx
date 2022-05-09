@@ -1,10 +1,9 @@
-import { useParams } from "react-router-dom";
 import { useContext, useEffect } from "react";
-import { context } from "../context/ContextProvider";
+import { context } from "../../context/ContextProvider";
 
 import "./style.css";
 import Header from "./header/Header";
-import { getUserName } from "../firebase/firebase-config";
+import { getUserName } from "../../firebase/authentication/userDetails";
 import Body from "./body/Body";
 const ProfilePage = () => {
   useEffect(() => {
@@ -12,7 +11,7 @@ const ProfilePage = () => {
     title.textContent = `Blogger | ${getUserName()}`;
   }, []);
   const { closeProfileToolTip } = useContext(context);
-  const { userId } = useParams();
+
   return (
     <div className="profile-page" onClick={closeProfileToolTip}>
       <Header />

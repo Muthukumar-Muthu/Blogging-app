@@ -3,15 +3,11 @@ import moment from "moment";
 import { getDoc, doc } from "firebase/firestore";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { generateHTML } from "@tiptap/core";
-import StarterKit from "@tiptap/starter-kit";
-import parse from "html-react-parser";
-import _ from "lodash";
 
-import getMargin from "../utils/margins";
+import getMargin from "../../functions/margins";
 import "./style.css";
-import { db } from "../firebase/firebase-config";
-
+import { db } from "../../firebase/configuration/firebase-config";
+import fixBlogObj from "../../functions/formatHtml";
 const Blog = () => {
   const { blogId, userId } = useParams();
   const [blogObj, setBlogObj] = useState(null);
@@ -60,23 +56,5 @@ const Blog = () => {
     </div>
   );
 };
-function fixBlogObj(blogObj) {
-  const obj = _.cloneDeep(blogObj);
-  const { blogContent } = obj;
-  const blogContentObj = JSON.parse(blogContent);
-  const string = generateHTML(blogContentObj, [StarterKit]);
-  const html = stringToHtml(string);
-  obj.blogContent = html;
-  return obj;
-}
-function stringToHtml(string) {
-  const options = {
-    replace: (domNode) => {
-      if (domNode.attribs && domNode.attribs.class === "remove") {
-        return <></>;
-      }
-    },
-  };
-  return parse(string, options);
-}
+
 export default Blog;

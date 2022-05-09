@@ -1,15 +1,14 @@
+import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+
 import "./style.css";
 import {
   getUserName,
   getUserMail,
   getUserPhoto,
   Logout,
-  getUserId,
-} from "../firebase/firebase-config";
-import { Link, useNavigate } from "react-router-dom";
-import { useContext } from "react";
-
-import { context } from "../context/ContextProvider";
+} from "../../firebase/authentication/userDetails";
+import { context } from "../../context/ContextProvider";
 const Profile = ({ position }) => {
   const { setshowToolTip, showToolTip } = useContext(context);
   const navigate = useNavigate();

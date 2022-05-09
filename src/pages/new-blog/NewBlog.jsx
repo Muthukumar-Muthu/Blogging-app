@@ -3,9 +3,14 @@ import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 
 import "./style.css";
-import { db, getUserId, getUserName } from "../firebase/firebase-config";
-import { context } from "../context/ContextProvider";
-import Header from "./Header";
+
+import {
+  getUserId,
+  getUserName,
+} from "../../firebase/authentication/userDetails";
+import { db } from "../../firebase/configuration/firebase-config";
+import { context } from "../../context/ContextProvider";
+import Header from "./header/Header";
 import Editor from "./editor/Editor";
 const NewBlog = () => {
   const { closeProfileToolTip } = useContext(context);

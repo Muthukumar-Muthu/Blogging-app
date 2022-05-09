@@ -3,12 +3,12 @@ import { useContext, useEffect } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 import "./App.css";
-import LandingPage from "./landing-page/LandingPage";
-import Home from "./home/Home";
-import NewBlog from "./new-blog/NewBlog";
+import LandingPage from "./pages/landing-page/LandingPage";
+import Home from "./pages/home/Home";
+import NewBlog from "./pages/new-blog/NewBlog";
 import { context } from "./context/ContextProvider";
-import ProfilePage from "./profile-page/ProfilePage";
-
+import ProfilePage from "./pages/profile-page/ProfilePage";
+import PrivateComponent from "./hoc/PrivateComponent";
 function App() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -47,26 +47,4 @@ function App() {
   );
 }
 
-function PrivateComponent({ render }) {
-  const { startUp, user, navigate } = useContext(context);
-  const location = useLocation();
-  useEffect(() => {
-    startUp();
-  }, []);
-  useEffect(() => {
-    if (comparePath(`/blog/:userId/:blogId`, location.pathname)) {
-    } else if (!user) {
-      console.log("user not logged returning to login page");
-      return navigate("/login");
-    }
-  }, [user]);
-
-  return render;
-}
-
-function comparePath(s1 = "", s2 = "") {
-  const path1 = s1.split("/");
-  const path2 = s2.split("/");
-  return path1.length === path2.length;
-}
 export default App;
