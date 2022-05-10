@@ -19,6 +19,7 @@ const Profile = ({ position }) => {
       <img
         onMouseEnter={() => {
           setshowToolTip(true);
+          console.log("hover");
         }}
         onClick={() => {
           setshowToolTip(true);
