@@ -10,9 +10,8 @@ import { context } from "./context/ContextProvider";
 import ProfilePage from "./pages/profile-page/ProfilePage";
 import PrivateComponent from "./hoc/PrivateComponent";
 function App() {
-  const navigate = useNavigate();
   const location = useLocation();
-  const { user, setUser, locationRef } = useContext(context);
+  const { navigate, setUser, locationRef } = useContext(context);
 
   useEffect(() => {
     const unsub = onAuthStateChanged(getAuth(), (user) => {
@@ -28,9 +27,7 @@ function App() {
 
     return unsub;
   }, []);
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
+
   return (
     <Routes>
       <Route path="/login" element={<LandingPage />} />

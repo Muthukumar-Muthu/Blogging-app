@@ -9,59 +9,72 @@ import {
   Logout,
 } from "../../firebase/authentication/userDetails";
 import { context } from "../../context/ContextProvider";
+import LoginButton from "../login-button/LoginButton";
 const Profile = ({ position }) => {
-  const { setshowToolTip, showToolTip } = useContext(context);
+  const { setshowToolTip, showToolTip, user, locationRef } =
+    useContext(context);
   const navigate = useNavigate();
-  console.log(showToolTip);
-
   return (
-    <div className="profile">
-      <img
-        onMouseEnter={() => {
-          setshowToolTip(true);
-        }}
-        onClick={() => {
-          setshowToolTip(true);
-        }}
-        className="user-photo"
-        src={getUserPhoto()}
-        alt=""
-      />
+    <div
+      className="profile"
+      onMouseEnter={() => {
+        setshowToolTip(true);
+        console.log("hover");
+      }}
+      onClick={() => {
+        setshowToolTip(true);
+      }}
+    >
+      <img className="user-photo" src={getUserPhoto()} alt="" />
       {showToolTip && (
         <div className={` profile-tooltip ${position || "right"}`}>
-          <div
-            onClick={() => {
-              Logout(() => {
-                navigate("/login");
-              });
-            }}
-          >
-            Sign out
-          </div>
-          <div>Stats</div>
-          <div>Settings</div>
-          <div className="user-info">
-            <Link
-              style={{
-                display: "flex",
-
-                justifyContent: "center",
-              }}
-              to={`/profile`}
-            >
-              <img className="user-photo" src={getUserPhoto()} alt="" />
+          {user ? (
+            <>
               <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "center",
+                onClick={() => {
+                  Logout(() => {
+                    navigate("/login");
+                  });
                 }}
               >
-                <div className="name">{getUserName()}</div>
-                <div className="email">{getUserMail()}</div>
+                Sign out
               </div>
-            </Link>
-          </div>
+              <div>Stats</div>
+              <div>Settings</div>
+              <div className="user-info">
+                <Link
+                  style={{
+                    display: "flex",
+
+                    justifyContent: "center",
+                  }}
+                  to={`/profile`}
+                >
+                  <img className="user-photo" src={getUserPhoto()} alt="" />
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <div className="name">{getUserName()}</div>
+                    <div className="email">{getUserMail()}</div>
+                  </div>
+                </Link>
+              </div>
+            </>
+          ) : (
+            <LoginButton
+              text={"Login"}
+              style={{
+                padding: "0.8em 1em",
+                fontSize: "medium",
+                display: "block",
+              }}
+              callback={()=>navigate(locationRef.current)}
+            />
+          )}
         </div>
       )}
     </div>

@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import { useContext, useEffect } from "react";
 
 import { context } from "../context/ContextProvider";
@@ -6,18 +6,11 @@ import { context } from "../context/ContextProvider";
 function PrivateComponent({ render }) {
   const { startUp, user, navigate } = useContext(context);
   const location = useLocation();
-  useEffect(() => {
-    startUp();
-  }, []);
-  useEffect(() => {
-    if (comparePath(`/blog/:userId/:blogId`, location.pathname)) {
-    } else if (!user) {
-      console.log("user not logged returning to login page");
-      return navigate("/login");
-    }
-  }, [user]);
+  const path = comparePath(`/blog/:userId/:blogId`, location.pathname);
 
-  return render;
+  startUp();
+
+  return path ? render : user ? render : <Navigate to={"/login"} />;
 }
 
 function comparePath(s1 = "", s2 = "") {
