@@ -15,17 +15,19 @@ const Profile = ({ position }) => {
   console.log(showToolTip);
 
   return (
-    <div
-      className="profile"
-      onMouseEnter={() => {
-        setshowToolTip(true);
-        console.log("hover");
-      }}
-      onClick={() => {
-        setshowToolTip(true);
-      }}
-    >
-      <img className="user-photo" src={getUserPhoto()} alt="" />
+    <div className="profile">
+      <img
+        onMouseEnter={() => {
+          setshowToolTip(true);
+          console.log("hover");
+        }}
+        onClick={() => {
+          setshowToolTip(true);
+        }}
+        className="user-photo"
+        src={getUserPhoto()}
+        alt=""
+      />
       {showToolTip && (
         <div className={` profile-tooltip ${position || "right"}`}>
           <div
