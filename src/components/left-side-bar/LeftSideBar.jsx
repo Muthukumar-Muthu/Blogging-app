@@ -27,11 +27,7 @@ const LeftSideBar = ({ showToolTip, setshowToolTip }) => {
           <ToolTip Children={FaEdit} text={"Edit"} />
         </Link>
       </div>
-      <Profile
-        showToolTip={showToolTip}
-        position="right"
-        setshowToolTip={setshowToolTip}
-      />
+      <Profile position="right" />
     </div>
   );
 };

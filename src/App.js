@@ -10,7 +10,8 @@ import { context } from "./context/ContextProvider";
 import ProfilePage from "./pages/profile-page/ProfilePage";
 import PrivateComponent from "./hoc/PrivateComponent";
 function App() {
-  const { navigate, location, setUser, locationRef } = useContext(context);
+  const location = useLocation();
+  const { navigate, setUser, locationRef } = useContext(context);
 
   useEffect(() => {
     const unsub = onAuthStateChanged(getAuth(), (user) => {
