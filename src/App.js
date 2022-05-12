@@ -16,7 +16,7 @@ function App() {
 
   useEffect(() => {
     const unsub = onAuthStateChanged(getAuth(), (user) => {
-      console.log("Auth state changed", user);
+      console.log("Auth state changed", !!user);
 
       if (user) {
         navigate(locationRef.current);

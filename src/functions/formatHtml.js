@@ -5,13 +5,18 @@ import _ from "lodash";
 
 //converting html in string to acutal html
 function fixBlogObj(blogObj) {
-  const obj = _.cloneDeep(blogObj);
-  const { blogContent } = obj;
-  const blogContentObj = JSON.parse(blogContent);
-  const string = generateHTML(blogContentObj, [StarterKit]);
-  const html = stringToHtml(string);
-  obj.blogContent = html;
-  return obj;
+  try {
+    const obj = _.cloneDeep(blogObj);
+    const { blogContent } = obj;
+    const blogContentObj = JSON.parse(blogContent);
+    const string = generateHTML(blogContentObj, [StarterKit]);
+    const html = stringToHtml(string);
+    obj.blogContent = html;
+    return obj;
+  } catch (error) {
+    console.warn(error);
+    return {};
+  }
 }
 function stringToHtml(string) {
   const options = {
