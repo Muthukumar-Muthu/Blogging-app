@@ -118,11 +118,20 @@ const MenuBar = ({ editor }) => {
     </>
   );
 };
+//TODO:fix controlled inputs
+const Editor = ({ setBlogContent, blogContent }) => {
+  //blogcontent shuld not be a json
+  console.log(blogContent);
 
-const Editor = ({ setBlogContent }) => {
   const editor = useEditor({
     extensions: [StarterKit],
-    content: `Get started`,
+    content: "get Started",
+    onCreate: ({ editor }) => {
+      console.log("editor created");
+      console.log("while creating", blogContent);
+
+      if (blogContent) editor.commands.setContent(JSON.parse(blogContent));
+    },
     onUpdate: ({ editor }) => {
       const json = editor.getJSON();
       setBlogContent(json);

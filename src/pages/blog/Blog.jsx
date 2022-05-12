@@ -1,16 +1,18 @@
-import { Timestamp } from "firebase/firestore";
+import { collection, deleteDoc, Timestamp } from "firebase/firestore";
 import moment from "moment";
 import { getDoc, doc } from "firebase/firestore";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 // import getMargin from "../../functions/margins";
 import "./style.css";
 import { db } from "../../firebase/configuration/firebase-config";
 import fixBlogObj from "../../functions/formatHtml";
+import { isUserSignedIn } from "../../firebase/authentication/userDetails";
 const Blog = () => {
   const { blogId, userId } = useParams();
   const [blogObj, setBlogObj] = useState(null);
+  const navigate = useNavigate();
   // const { leftMargin, rightMargin } = getMargin();
   async function getBlog() {
     try {
@@ -21,6 +23,22 @@ const Blog = () => {
     }
   }
 
+  async function deleteBlog() {
+    //TODO: FIX WARN
+    if (isUserSignedIn()) {
+      await deleteDoc(doc(db, `users/${userId}/blogs/${blogId}`));
+      navigate("/");
+    } else {
+      console.warn("logging in first");
+    }
+  }
+  async function updateBlog() { //TODO: FIX WARN
+    if (isUserSignedIn()) {
+      navigate(`/edit/${userId}/${blogId}`)
+    } else {
+      console.warn("logging in first");
+    }
+  }
   useEffect(() => {
     getBlog();
   }, []);
@@ -45,7 +63,20 @@ const Blog = () => {
       //   marginInline: `${leftMargin + 5}px ${rightMargin + 5}px`,
       // }}
     >
-      <div className="blog">
+      <div
+        className="blog"
+        style={{
+          marginTop: "1em",
+        }}
+      >
+        <div className="buttons">
+          <button style={{ marginInline: "auto" }} onClick={deleteBlog}>
+            Delete
+          </button>
+          <button style={{ marginInline: "auto" }} onClick={updateBlog}>
+            Update
+          </button>
+        </div>
         <h2 className="heading">{heading}</h2>
         <p className="summary">{blogContent}</p>
         <div className="flex">
