@@ -38,7 +38,6 @@ const UpdateBlog = () => {
 
   function submitHandler() {
     sumbitDoc({ ...formObj, blogContent: JSON.stringify(blogContent) });
-    navigate(`/`);
   }
   async function sumbitDoc(obj) {
     const saveObj = {
@@ -49,8 +48,10 @@ const UpdateBlog = () => {
     };
     try {
       await setDoc(doc(db, `users/${userId}/blogs/${blogId}`), saveObj);
+      navigate(`/blog/${userId}/${blogId}`);
     } catch (error) {
       console.warn(error);
+      navigate("/");
     }
   }
   console.log("rendered");
