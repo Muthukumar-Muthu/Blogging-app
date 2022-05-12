@@ -3,6 +3,7 @@ import StarterKit from "@tiptap/starter-kit";
 import parse from "html-react-parser";
 import _ from "lodash";
 
+//converting html in string to acutal html
 function fixBlogObj(blogObj) {
   const obj = _.cloneDeep(blogObj);
   const { blogContent } = obj;

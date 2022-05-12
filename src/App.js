@@ -9,6 +9,7 @@ import NewBlog from "./pages/new-blog/NewBlog";
 import { context } from "./context/ContextProvider";
 import ProfilePage from "./pages/profile-page/ProfilePage";
 import PrivateComponent from "./hoc/PrivateComponent";
+import UpdateBlog from "./pages/update-blog/UpdateBlog";
 function App() {
   const location = useLocation();
   const { navigate, setUser, locationRef } = useContext(context);
@@ -39,6 +40,10 @@ function App() {
       <Route
         element={<PrivateComponent render={<ProfilePage />} />}
         path="/profile"
+      />
+      <Route
+        element={<PrivateComponent render={<UpdateBlog />} />}
+        path="/edit/:userId/:blogId"
       />
     </Routes>
   );

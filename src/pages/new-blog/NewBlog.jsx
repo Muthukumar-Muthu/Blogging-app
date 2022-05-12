@@ -10,8 +10,8 @@ import {
 } from "../../firebase/authentication/userDetails";
 import { db } from "../../firebase/configuration/firebase-config";
 import { context } from "../../context/ContextProvider";
-import Header from "./header/Header";
-import Editor from "./editor/Editor";
+import Header from "../../components/header/Header";
+import Editor from "../../components/editor/Editor";
 const NewBlog = () => {
   const { closeProfileToolTip } = useContext(context);
   const navigate = useNavigate();
