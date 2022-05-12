@@ -40,25 +40,6 @@
   position: relative;
 }
 
-/*
-.tooltip::before {
-  content: "";
-  width: 100%;
-  height: 100%;
-  background-color: red;
-  position: absolute;
-  left: -10px;
-  top: 0;
-  z-index: 1;
-  border: 100px solid green;
-  border-top: green;
-  border-right: transparent;
-  border-bottom: transparent;
-  border-left: transparent;
-  width: 0;
-  height: 0;
-} */
-
 .tooltip {
   text-transform: capitalize;
   position: absolute;

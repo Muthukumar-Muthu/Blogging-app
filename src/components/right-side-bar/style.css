@@ -5,13 +5,16 @@
   right: 0;
   overflow-y: scroll;
   margin: 0;
-  width: 60%;
-  height: 100%;
-  max-width: 450px;
+  width: 30%;
+  height: 100vh;
 }
 
 .right-side-bar {
   height: 100%;
   padding: 1em;
+}
+
+.right-side-bar-wrapper::-webkit-scrollbar {
+  display: none;
 }
 /*# sourceMappingURL=style.css.map */

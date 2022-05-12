@@ -12,13 +12,7 @@
   justify-content: space-between;
   height: fit-content;
 }
-/* .home > * {
-  margin-inline: auto;
-} */
 
-/* .blog-list {
-  width: 50%;
-} */
 .logout {
   text-align: center;
   background-color: blue;
