@@ -21,7 +21,7 @@ const Body = () => {
             readOnly
             spellCheck="false"
             type="text"
-            value={"Muthukumar M"}
+            value={getUserName()}
           />
         </div>
       </div>

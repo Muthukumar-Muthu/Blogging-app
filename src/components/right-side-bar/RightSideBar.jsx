@@ -2,6 +2,7 @@ import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Author from "../author/Author";
 import "./style.css";
+import breakPath from "../../functions/breakPath";
 
 const RightSideBar = () => {
   const [isBlog, setIsBlog] = useState(false);
@@ -10,7 +11,7 @@ const RightSideBar = () => {
   useEffect(() => {
     console.log("location changed");
 
-    const [host, path, userId, blogId] = location.pathname.split("/");
+    const { path, userId, blogId } = breakPath(location.pathname);
     console.log(path, userId, blogId);
 
     if (!(path === "blog" && userId && blogId)) {
