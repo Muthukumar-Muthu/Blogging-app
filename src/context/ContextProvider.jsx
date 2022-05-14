@@ -4,6 +4,7 @@ const context = createContext(null);
 const ContextProvider = ({ children }) => {
   const [showToolTip, setshowToolTip] = useState(false);
   const [user, setUser] = useState(false);
+
   const locationRef = useRef("/login");
   const navigate = useNavigate();
   let location = useLocation();

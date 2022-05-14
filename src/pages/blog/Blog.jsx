@@ -11,6 +11,8 @@ import fixBlogObj from "../../functions/formatHtml";
 import { isUserSignedIn } from "../../firebase/authentication/userDetails";
 const Blog = () => {
   const { blogId, userId } = useParams();
+  console.log(useParams());
+
   const [blogObj, setBlogObj] = useState(null);
   const navigate = useNavigate();
   // const { leftMargin, rightMargin } = getMargin();
@@ -32,9 +34,10 @@ const Blog = () => {
       console.warn("logging in first");
     }
   }
-  async function updateBlog() { //TODO: FIX WARN
+  async function updateBlog() {
+    //TODO: FIX WARN
     if (isUserSignedIn()) {
-      navigate(`/edit/${userId}/${blogId}`)
+      navigate(`/edit/${userId}/${blogId}`);
     } else {
       console.warn("logging in first");
     }
