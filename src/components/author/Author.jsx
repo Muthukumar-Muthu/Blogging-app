@@ -50,7 +50,10 @@ const Author = () => {
               marginBottom: "2em",
             }}
           >
-            <img src="/assests/user-photo.png" alt="" />
+            <img
+              src={`${userDetails.photoUrl}` || "/assests/user-photo.png"}
+              alt=""
+            />
           </div>
           <div className="author-details">
             <div>
