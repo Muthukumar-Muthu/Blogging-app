@@ -1,7 +1,7 @@
 import { Timestamp } from "firebase/firestore";
 import moment from "moment";
 
-export async function timeStampToDate(timeStamp, setState = () => {}) {
+export async function timeStampToDate(timeStamp) {
   let date = {};
   if (!timeStamp) {
     date = new Date();
@@ -16,6 +16,5 @@ export async function timeStampToDate(timeStamp, setState = () => {}) {
   const dateString = moment(date).format("LLL");
   console.log(dateString);
 
-  setState(dateString);
   return dateString;
 }

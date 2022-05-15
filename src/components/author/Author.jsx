@@ -16,7 +16,9 @@ const Author = () => {
   const domain = window.location.hostname;
   useEffect(() => {
     getUserDetails();
-    timeStampToDate(userDetails.lastLogin, setLastLogin);
+    timeStampToDate(userDetails.lastLogin)
+      .then((string) => setLastLogin(string))
+      .catch((error) => console.warn(error));
   }, []);
 
   async function getUserDetails() {

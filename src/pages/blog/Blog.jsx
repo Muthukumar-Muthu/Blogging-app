@@ -61,7 +61,7 @@ const Blog = () => {
 
   return (
     <div
-      className="blog-wrapper"
+      className="blog-wrapper center-component"
       // style={{
       //   marginInline: `${leftMargin + 5}px ${rightMargin + 5}px`,
       // }}

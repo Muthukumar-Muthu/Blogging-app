@@ -9,7 +9,7 @@ const BlogList = ({ blogs }) => {
   // const { leftMargin, rightMargin } = getMargin();
   return (
     <section
-      className="blog-list"
+      className="blog-list center-component"
       // style={{
       //   marginInline: `${leftMargin + 5}px ${rightMargin + 5}px`,
       // }}

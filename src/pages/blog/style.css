@@ -1,6 +1,7 @@
 .blog-wrapper {
+  margin-inline: 130px 405px;
   width: 60%;
-  margin-inline: 110px 405px;
+  height: 100vh;
   /*# sourceMappingURL=style.css.map */
 }
 
