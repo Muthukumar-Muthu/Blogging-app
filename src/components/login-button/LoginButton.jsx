@@ -1,14 +1,23 @@
-import { useContext } from "react";
 import { Login } from "../../firebase/authentication/userDetails";
-import { context } from "../../context/ContextProvider";
-const LoginButton = ({ style, text, callback }) => {
-  const { navigate } = useContext(context);
+import IsUserPersented from "../../firebase/functions/IsUserPresented";
+import { useNavigate } from "react-router-dom";
+const LoginButton = ({ style, text, callback, pathname = "/" }) => {
+  const navigate = useNavigate();
+
   return (
     <div
       style={{ ...style }}
       onClick={() => {
         Login(() => {
-          callback ? callback() : navigate("/");
+          IsUserPersented(pathname)
+            .then((bool) => {
+              if (bool) {
+                navigate(pathname);
+              } else navigate("/usernotsinged");
+            })
+            .catch((err) => {
+              console.error(err);
+            });
         });
       }}
       className="login-button"

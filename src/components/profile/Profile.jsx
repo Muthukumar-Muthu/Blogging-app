@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 
 import "./style.css";
@@ -13,6 +13,8 @@ import LoginButton from "../login-button/LoginButton";
 const Profile = ({ position }) => {
   const { setshowToolTip, showToolTip, user, locationRef } =
     useContext(context);
+
+  const location = useLocation();
   const navigate = useNavigate();
   return (
     <div
@@ -71,7 +73,7 @@ const Profile = ({ position }) => {
                 fontSize: "medium",
                 display: "block",
               }}
-              callback={() => navigate(locationRef.current)}
+              pathname={location.pathname}
             />
           )}
         </div>

@@ -13,7 +13,12 @@ function comparePath(s1 = "", s2 = "") {
   const path1 = s1.split("/");
   const path2 = s2.split("/");
   let isPublic = false;
-  if (path1[0] === path2[0] && path1.length === path2.length) isPublic = true;
+  if (
+    path1[0] === path2[0] &&
+    path1[0] === "blog" &&
+    path1.length === path2.length
+  )
+    isPublic = true;
   return isPublic;
 }
 export default PrivateRoute;

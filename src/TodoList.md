@@ -11,3 +11,4 @@
 - change method of styling
 - design Landing page
 - Add more login method
+- ~~ make blog page public ~~\*\*\*\*
