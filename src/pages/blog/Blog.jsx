@@ -11,7 +11,6 @@ import fixBlogObj from "../../functions/formatHtml";
 import { isUserSignedIn } from "../../firebase/authentication/userDetails";
 const Blog = () => {
   const { blogId, userId } = useParams();
-  console.log(useParams());
 
   const [blogObj, setBlogObj] = useState(null);
   const navigate = useNavigate();

@@ -14,7 +14,6 @@ export async function timeStampToDate(timeStamp) {
     }
   }
   const dateString = moment(date).format("LLL");
-  console.log(dateString);
 
   return dateString;
 }

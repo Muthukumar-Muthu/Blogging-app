@@ -28,7 +28,7 @@ const UpdateBlog = () => {
     try {
       const blog = await getDoc(doc(db, `users/${userId}/blogs/${blogId}`));
       const { heading, blogContent: summary } = blog.data();
-      console.log("summary renderd", summary);
+
       setFormObj({ heading });
       setBlogContent(summary);
     } catch (error) {
@@ -54,7 +54,6 @@ const UpdateBlog = () => {
       navigate("/");
     }
   }
-  console.log("rendered");
 
   return (
     <div>

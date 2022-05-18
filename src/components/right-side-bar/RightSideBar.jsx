@@ -9,10 +9,7 @@ const RightSideBar = () => {
   const location = useLocation();
 
   useEffect(() => {
-    console.log("location changed");
-
     const { path, userId, blogId } = breakPath(location.pathname);
-    console.log(path, userId, blogId);
 
     if (!(path === "blog" && userId && blogId)) {
       setIsBlog(false);

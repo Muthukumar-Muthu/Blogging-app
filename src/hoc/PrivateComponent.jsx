@@ -1,21 +1,19 @@
+import { useContext } from "react";
 import { Navigate, useLocation } from "react-router-dom";
-import { useContext, useEffect } from "react";
 
-import { context } from "../context/ContextProvider";
+import { userContext } from "../context/UserContext";
 
-function PrivateComponent({ render }) {
-  const { startUp, user, navigate } = useContext(context);
+const PrivateRoute = ({ element: C }) => {
+  const { user } = useContext(userContext);
   const location = useLocation();
-  const path = comparePath(`/blog/:userId/:blogId`, location.pathname);
-
-  startUp();
-
-  return path ? render : user ? render : <Navigate to={"/login"} />;
-}
-
+  const isPublicPath = comparePath(`/blog/:userId/:blogId`, location.pathname);
+  return isPublicPath ? C : user ? C : <Navigate to={"/login"} />;
+};
 function comparePath(s1 = "", s2 = "") {
   const path1 = s1.split("/");
   const path2 = s2.split("/");
-  return path1.length === path2.length;
+  let isPublic = false;
+  if (path1[0] === path2[0] && path1.length === path2.length) isPublic = true;
+  return isPublic;
 }
-export default PrivateComponent;
+export default PrivateRoute;
