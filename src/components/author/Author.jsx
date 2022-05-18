@@ -50,13 +50,16 @@ const Author = () => {
             }}
           >
             <img
+              style={{
+                backgroundColor: "lightgrey",
+              }}
               src={`${userDetails.photoUrl}` || "/assests/user-photo.png"}
               alt=""
             />
           </div>
           <div className="author-details">
             <div>
-              <h3>Name :</h3> <span>{userDetails.name || "Loading"}</span>
+              <h3>Name :</h3> <span>{userDetails.name}</span>
             </div>
             <div>
               <h3>Last Login :</h3>
