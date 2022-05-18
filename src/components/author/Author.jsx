@@ -24,7 +24,6 @@ const Author = () => {
   async function getUserDetails() {
     try {
       const user = await getDoc(doc(db, `users/${userId}/`));
-      console.log(user.data());
 
       setUserDetails(user.data());
     } catch (error) {

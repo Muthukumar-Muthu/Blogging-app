@@ -1,48 +1,29 @@
-import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
-import { useContext, useEffect } from "react";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { Route, Routes } from "react-router-dom";
 
 import "./App.css";
 import LandingPage from "./pages/landing-page/LandingPage";
 import Home from "./pages/home/Home";
 import NewBlog from "./pages/new-blog/NewBlog";
-import { context } from "./context/ContextProvider";
+
 import ProfilePage from "./pages/profile-page/ProfilePage";
 import PrivateComponent from "./hoc/PrivateComponent";
 import UpdateBlog from "./pages/update-blog/UpdateBlog";
+import { AuthProvider } from "./context/UserContext";
 function App() {
-  const location = useLocation();
-  const { navigate, setUser, locationRef } = useContext(context);
-
-  useEffect(() => {
-    const unsub = onAuthStateChanged(getAuth(), (user) => {
-      console.log("Auth state changed", !!user);
-
-      if (user) {
-        navigate(locationRef.current);
-      } else {
-        locationRef.current = location.pathname;
-      }
-      setUser(user);
-    });
-
-    return unsub;
-  }, []);
-
   return (
     <Routes>
       <Route path="/login" element={<LandingPage />} />
-      <Route path="/*" element={<PrivateComponent render={<Home />} />} />
+      <Route path="/*" element={<PrivateComponent element={<Home />} />} />
       <Route
         path="/newblog"
-        element={<PrivateComponent render={<NewBlog />} />}
+        element={<PrivateComponent element={<NewBlog />} />}
       />
       <Route
-        element={<PrivateComponent render={<ProfilePage />} />}
+        element={<PrivateComponent element={<ProfilePage />} />}
         path="/profile"
       />
       <Route
-        element={<PrivateComponent render={<UpdateBlog />} />}
+        element={<PrivateComponent element={<UpdateBlog />} />}
         path="/edit/:userId/:blogId"
       />
     </Routes>

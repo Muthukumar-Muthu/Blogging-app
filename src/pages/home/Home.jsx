@@ -17,7 +17,6 @@ export default function Home() {
   const { closeProfileToolTip, user } = useContext(context);
 
   useEffect(() => {
-    console.log(user);
     if (user) {
       let unsub = 0;
       try {

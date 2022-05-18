@@ -19,7 +19,6 @@ const Profile = ({ position }) => {
       className="profile"
       onMouseEnter={() => {
         setshowToolTip(true);
-        console.log("hover");
       }}
       onClick={() => {
         setshowToolTip(true);
@@ -72,7 +71,7 @@ const Profile = ({ position }) => {
                 fontSize: "medium",
                 display: "block",
               }}
-              callback={()=>navigate(locationRef.current)}
+              callback={() => navigate(locationRef.current)}
             />
           )}
         </div>

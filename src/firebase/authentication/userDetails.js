@@ -15,7 +15,7 @@ async function Login(fun = () => {}) {
     const provider = new GoogleAuthProvider();
     await setPersistence(auth, browserSessionPersistence);
     await signInWithPopup(auth, provider);
-    console.log(fun);
+
     fun();
   } catch (error) {
     console.log(error);
@@ -23,8 +23,6 @@ async function Login(fun = () => {}) {
 }
 
 async function Logout(fun = () => {}) {
-  console.log("logging out");
-
   try {
     console.log(await signOut(auth));
     fun();
