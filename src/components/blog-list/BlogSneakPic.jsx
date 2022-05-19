@@ -1,7 +1,12 @@
 import { Timestamp } from "firebase/firestore";
+
 import moment from "moment";
 import { Link } from "react-router-dom";
-import { getUserId } from "../../firebase/authentication/userDetails";
+import {
+  getUserId,
+  getUserPhoto,
+} from "../../firebase/authentication/userDetails";
+import trim from "../../functions/trimSummary";
 
 function BlogSneakPic({ BlogObj }) {
   const { heading, blogContent, timeStamp, name } = BlogObj;
@@ -17,14 +22,18 @@ function BlogSneakPic({ BlogObj }) {
   }
   //TODO: show only few lines for content
   //TODO: make sneak pic same as medium.com
+  //TODO: LINK TAG MUST ME UPDATED WITH CORRECT ONE
   return (
     <li className="blog-sneak-pic">
       <Link className="blog-sneak-pic" to={`/blog/${getUserId()}/${blogId}`}>
-        <h2 className="heading">{heading}</h2>
-        <p className="summary">{blogContent}</p>
-        <div className="flex">
-          <h4 className="author">{name}</h4>
-          <h6 className="time">{date}</h6>
+        <div className="head">
+          <img className="author-photo" src={getUserPhoto()} alt="" />
+          <span className="author-name">{name}</span>
+          <span className="blog-date">{`· ${date}`}</span>
+        </div>
+        <div className="content">
+          <h2>{heading}</h2>
+          <p>{trim(blogContent)}</p>
         </div>
       </Link>
     </li>

@@ -4,6 +4,8 @@ import "./style.css";
 import BlogSneakPic from "./BlogSneakPic";
 
 const BlogList = ({ blogs }) => {
+  console.log(blogs);
+
   return (
     <section className="blog-list center-component">
       <ul>
