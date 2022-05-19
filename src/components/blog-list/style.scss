@@ -27,3 +27,19 @@ li > * {
 .summary * {
   margin-block: 0.2em;
 }
+.add-blog {
+  background-color: grey;
+  color: darkgray;
+  cursor: pointer;
+  padding: 1em;
+}
+.blog-sneak-pic > * {
+  color: black;
+}
+.blog-sneak-pic h2 {
+  font-size: x-large;
+}
+.blog-sneak-pic p {
+  font-size: medium;
+  font-weight: normal;
+}

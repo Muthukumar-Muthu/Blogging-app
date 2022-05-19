@@ -1,5 +1,17 @@
-.home {
-  margin: 0;
-  padding: 0;
+.home .leftsidebar {
+  margin: 0 !important;
+  padding: 1em 0.5em;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.home .center-component {
+  margin-bottom: 2em;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 /*# sourceMappingURL=style.css.map */

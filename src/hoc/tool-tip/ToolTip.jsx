@@ -1,10 +1,11 @@
 import { useState } from "react";
 
+import "../tool-tip/style.css";
 const ToolTip = ({ Children, text }) => {
   const [showToolTip, setShowToolTip] = useState(false);
 
   return (
-    <div className="icon">
+    <div className="tooltip-parent">
       <Children
         onMouseEnter={() => {
           setShowToolTip(true);

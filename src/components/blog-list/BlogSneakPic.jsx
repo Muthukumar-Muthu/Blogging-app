@@ -18,16 +18,16 @@ function BlogSneakPic({ BlogObj }) {
   //TODO: show only few lines for content
   //TODO: make sneak pic same as medium.com
   return (
-    <Link className="blog-sneak-pic" to={`/blog/${getUserId()}/${blogId}`}>
-      <li className="blog-sneak-pic">
+    <li className="blog-sneak-pic">
+      <Link className="blog-sneak-pic" to={`/blog/${getUserId()}/${blogId}`}>
         <h2 className="heading">{heading}</h2>
         <p className="summary">{blogContent}</p>
         <div className="flex">
           <h4 className="author">{name}</h4>
           <h6 className="time">{date}</h6>
         </div>
-      </li>
-    </Link>
+      </Link>
+    </li>
   );
 }
 export default BlogSneakPic;

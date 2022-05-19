@@ -7,9 +7,9 @@ const BlogList = ({ blogs }) => {
   return (
     <section className="blog-list center-component">
       <ul>
-        <Link to="/newblog">
-          <li className="add-blog">Add new Blog +</li>
-        </Link>
+        <li className="add-blog">
+          <Link to="/newblog">Add new Blog + </Link>
+        </li>
 
         {blogs.length === 0
           ? "Get Started"

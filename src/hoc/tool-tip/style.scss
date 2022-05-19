@@ -1,0 +1,15 @@
+.tooltip-parent {
+  position: relative;
+  .tooltip {
+    text-transform: capitalize;
+    position: absolute;
+    bottom: 30%;
+    left: 105%;
+    z-index: 1;
+    font-size: small;
+    background-color: black;
+    color: white;
+    border-radius: 25px;
+    padding: 0.25em 0.75em;
+  }
+}

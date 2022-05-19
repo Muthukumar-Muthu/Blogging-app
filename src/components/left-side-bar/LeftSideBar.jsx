@@ -8,11 +8,11 @@ import {
 import { Link } from "react-router-dom";
 
 import Profile from "../profile/Profile";
-import ToolTip from "../../hoc/ToolTip";
+import ToolTip from "../../hoc/tool-tip/ToolTip";
 import "./style.css";
-const LeftSideBar = ({ showToolTip, setshowToolTip }) => {
+const LeftSideBar = () => {
   return (
-    <div className="sidebar leftsidebar">
+    <div className="leftsidebar">
       <Link to={"/"}>
         <img className="logo" src="\assests\logo.png" alt="blogger-logo" />
       </Link>
@@ -20,9 +20,15 @@ const LeftSideBar = ({ showToolTip, setshowToolTip }) => {
         <Link to={"/"}>
           <ToolTip Children={FaHome} text={"Home"} />
         </Link>
-        <ToolTip Children={FaBell} text={"Notifications"} />
-        <ToolTip Children={FaSave} text={"Lists"} />
-        <ToolTip Children={FaDraftingCompass} text={"Drafts"} />
+        <Link to={"/"}>
+          <ToolTip Children={FaBell} text={"Notifications"} />
+        </Link>
+        <Link to={"/"}>
+          <ToolTip Children={FaSave} text={"Lists"} />
+        </Link>
+        <Link to={"/"}>
+          <ToolTip Children={FaDraftingCompass} text={"Drafts"} />
+        </Link>
         <Link className="icon" to="/newblog">
           <ToolTip Children={FaEdit} text={"Edit"} />
         </Link>

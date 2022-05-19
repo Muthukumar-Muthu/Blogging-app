@@ -7,7 +7,7 @@
 - Ui of Blog Sneak peak
 - File storage for User photo
 - Profile tooltip separate state
-- set up : font Montserrat, Responsiveness
+  **- set up : font Montserrat, Responsiveness**
 - change method of styling
 - design Landing page
 - Add more login method
