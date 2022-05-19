@@ -65,8 +65,18 @@ const Author = () => {
               <h3>Last Login :</h3>
               <span>{lastLogin || "Loading"}</span>
             </div>
-            <div>
-              <h3>Bio : </h3>
+            <div
+              style={{
+                display: "block",
+              }}
+            >
+              <h3
+                style={{
+                  textAlign: "center",
+                }}
+              >
+                Bio :{" "}
+              </h3>
               <span>{userDetails.bio || "Loading"}</span>
             </div>
             <div
@@ -86,15 +96,11 @@ const Author = () => {
               <span>
                 {
                   <Link
-                    style={{
-                      textDecoration: "underline",
-                      fontSize: "medium",
-                      fontWeight: "normal",
-                    }}
+                    className="user-link"
                     target={"_blank"}
                     to={`/user/${userId}`}
                   >
-                    {`${domain}/user/${userId}`}
+                    {`/user/${userId}`}
                   </Link>
                 }
               </span>

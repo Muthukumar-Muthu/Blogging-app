@@ -1,8 +1,14 @@
 div.author {
-  background-color: lightblue;
   height: 100%;
   display: grid;
   place-items: center;
+  .user-link {
+    text-decoration: none;
+    font-size: medium;
+    font-weight: normal;
+    color: black;
+    font-weight: normal;
+  }
 
   > div {
     width: 85%;

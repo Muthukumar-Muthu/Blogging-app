@@ -1,9 +1,16 @@
 div.author {
-  background-color: lightblue;
   height: 100%;
   display: -ms-grid;
   display: grid;
   place-items: center;
+}
+
+div.author .user-link {
+  text-decoration: none;
+  font-size: medium;
+  font-weight: normal;
+  color: black;
+  font-weight: normal;
 }
 
 div.author > div {

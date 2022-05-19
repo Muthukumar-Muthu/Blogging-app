@@ -9,9 +9,9 @@
 
 .blog-list .add-blog {
   margin-top: 1em;
-  padding-block: 1em;
   background-color: lightgrey;
   border-radius: 10px;
+  padding: 0;
 }
 
 .blog-list .add-blog a {
@@ -21,10 +21,15 @@
   display: block;
   width: 100%;
   height: 100%;
+  padding: 1em 0.5em;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
 }
 
-.blog-list .add-blog:hover {
+.blog-list .add-blog:hover a {
   background-color: grey;
+  color: #eee4e4;
+  border-radius: 10px;
 }
 
 .blog-sneak-pic {
@@ -64,6 +69,7 @@
 .blog-sneak-pic .content p {
   font-weight: normal;
   margin-block: 0.5em;
+  font-size: medium;
 }
 
 li {
