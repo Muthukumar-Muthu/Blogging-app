@@ -6,7 +6,7 @@ export const Margin = (rendered) => {
   const [rightMargin, setRightMargin] = useState(getWidth("rightsidebar") || 0);
   console.log(leftMargin, rightMargin, rendered, "Margin");
   useEffect(() => {
-    window.addEventListener("resize", (e) => {
+    window.addEventListener("resize", () => {
       setLeftMargin(getWidth("leftsidebar"));
       setRightMargin(getWidth("rightsidebar"));
     });

@@ -1,15 +1,31 @@
 .blog-list {
-  // margin-inline: 110px auto;
-  // width: 50%;
   height: 100vh;
+  .horizontal-line {
+    padding: 0.25em;
+    border-bottom: thin solid lightgrey;
+  }
+  .add-blog {
+    margin-top: 1em;
+    padding-block: 1em;
+    background-color: lightgrey;
+    border-radius: 10px;
+    a {
+      color: darkslategrey;
+      font-weight: 900;
+      line-height: 1.1;
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .add-blog:hover {
+    background-color: grey;
+  }
 }
-// .blog-sneak-pic {
-//   margin-block: 1em;
-//   > .flex {
-//     align-items: center;
-//   }
+
 .blog-sneak-pic {
   color: black;
+
   .author-photo {
     width: 40px;
     height: 40px;
@@ -39,10 +55,9 @@
   }
 }
 li {
-  margin-block: 0.5em;
   border-bottom: thin solid lightgrey;
 
   list-style: none;
   word-wrap: break-word;
-  padding: 1em;
+  padding: 2em 1em;
 }
