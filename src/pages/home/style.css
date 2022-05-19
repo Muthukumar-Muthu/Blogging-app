@@ -10,8 +10,6 @@
 
 .home .center-component {
   margin-bottom: 2em;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
+  height: 100vh;
 }
 /*# sourceMappingURL=style.css.map */

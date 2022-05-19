@@ -15,6 +15,7 @@
 
 .user-photo {
   width: 35px;
+  height: 35px;
   border-radius: 50%;
   overflow: hidden;
   background-color: grey;
@@ -31,6 +32,11 @@
 
 .profile-tooltip > div {
   padding: 0.8em 1em;
+  cursor: pointer;
+}
+
+.profile-tooltip > div:hover {
+  background-color: lightgrey;
 }
 
 .profile-tooltip .user-info {

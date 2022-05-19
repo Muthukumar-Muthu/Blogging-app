@@ -1,6 +1,5 @@
 .profile {
   position: relative;
-
   margin-top: auto;
   background-color: lightgrey;
   width: 35px;
@@ -14,6 +13,7 @@
 }
 .user-photo {
   width: 35px;
+  height: 35px;
   border-radius: 50%;
   overflow: hidden;
   background-color: grey;
@@ -27,6 +27,10 @@
     rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
   > div {
     padding: 0.8em 1em;
+    cursor: pointer;
+  }
+  > div:hover {
+    background-color: lightgrey;
   }
   .user-info {
     display: flex;
@@ -36,9 +40,6 @@
     }
     div {
       margin-inline: 1em;
-      // div {
-      //   margin-block: 0.5em;
-      // }
     }
   }
 }
