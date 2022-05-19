@@ -17,7 +17,7 @@ const RightSideBar = () => {
   }, [location]);
 
   return (
-    <div className="right-side-bar-wrapper">
+    <div className="right-side-bar-wrapper rightsidebar">
       {isBlog ? (
         <Author />
       ) : (

@@ -12,8 +12,13 @@ import Blog from "../blog/Blog";
 import { db } from "../../firebase/configuration/firebase-config";
 import { context } from "../../context/ContextProvider";
 import fixBlogObj from "../../functions/formatHtml";
+import { Margin } from "../../hooks/Margin";
+
 export default function Home() {
   const [blogs, setBlogs] = useState([]);
+  const [rendered, setRenderd] = useState(false);
+  const { leftMargin, rightMargin } = Margin(rendered);
+
   const { closeProfileToolTip, user } = useContext(context);
 
   useEffect(() => {
@@ -27,6 +32,9 @@ export default function Home() {
       return unsub;
     }
   }, [user]);
+  useEffect(() => {
+    setRenderd(true);
+  }, []);
 
   function getBlogs() {
     console.log("Getting Blogs");
@@ -48,13 +56,21 @@ export default function Home() {
   return (
     <div className="home" onClick={closeProfileToolTip}>
       <LeftSideBar />
-      <Routes>
-        <Route
-          path={`/blog/:userId/:blogId`}
-          element={<Blog blogs={blogs} />}
-        />
-        <Route path="/" element={<BlogList blogs={blogs} />} />
-      </Routes>
+      <div
+        style={{
+          marginLeft: leftMargin,
+          marginRight: rightMargin,
+          paddingInline: "2em",
+        }}
+      >
+        <Routes>
+          <Route
+            path={`/blog/:userId/:blogId`}
+            element={<Blog blogs={blogs} />}
+          />
+          <Route path="/" element={<BlogList blogs={blogs} />} />
+        </Routes>
+      </div>
       <RightSideBar />
     </div>
   );
