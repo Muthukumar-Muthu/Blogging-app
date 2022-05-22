@@ -1,13 +1,17 @@
-import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
-import { useState, useEffect } from "react";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { useState, useEffect, useContext } from "react";
 
 import captilize from "../../../functions/captilize";
 import { getUserId } from "../../../firebase/authentication/userDetails";
 import { db } from "../../../firebase/configuration/firebase-config";
+import { getUserDetails } from "../../../firebase/firestore/getUserDetails";
+
+import { userContext } from "../../../context/UserContext";
 
 const Bio = () => {
   const [edit, setEdit] = useState(false);
   const [bio, setBio] = useState("");
+  const { setIsCompleted } = useContext(userContext);
   function save() {
     if (bio.trim().length === 0) {
       alert(`bio is empty can't update`);
@@ -36,6 +40,10 @@ const Bio = () => {
       await updateDoc(doc(db, `users/${getUserId()}/`), {
         bio: formatted,
         userProfileCompleted: true,
+      });
+      getUserDetails("userProfileCompleted").then((completeStatus) => {
+        console.log(completeStatus);
+        setIsCompleted(completeStatus);
       });
     } catch (error) {
       console.warn(error);
