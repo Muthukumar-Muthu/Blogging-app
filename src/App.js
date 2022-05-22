@@ -8,6 +8,7 @@ import NewBlog from "./pages/new-blog/NewBlog";
 import ProfilePage from "./pages/profile-page/ProfilePage";
 import PrivateComponent from "./hoc/PrivateComponent";
 import UpdateBlog from "./pages/update-blog/UpdateBlog";
+import UserProfileIncomplete from "./pages/userprofileincomplete/UserProfileIncomplete";
 
 function App() {
   return (
@@ -26,6 +27,10 @@ function App() {
         <Route
           element={<PrivateComponent element={<UpdateBlog />} />}
           path="/edit/:userId/:blogId"
+        />
+        <Route
+          element={<PrivateComponent element={<UserProfileIncomplete />} />}
+          path="/userprofilenotcompleted"
         />
       </Routes>
     </div>

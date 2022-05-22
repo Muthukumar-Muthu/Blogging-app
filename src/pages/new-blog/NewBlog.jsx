@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 import "./style.css";
 
@@ -12,8 +12,10 @@ import { db } from "../../firebase/configuration/firebase-config";
 import { context } from "../../context/ContextProvider";
 import Header from "../../components/header/Header";
 import Editor from "../../components/editor/Editor";
+import { userContext } from "../../context/UserContext";
 const NewBlog = () => {
   const { closeProfileToolTip } = useContext(context);
+  const { isCompleted } = useContext(userContext);
   const navigate = useNavigate();
   const [formObj, setFormObj] = useState({});
   const [blogContent, setBlogContent] = useState({});
@@ -47,7 +49,7 @@ const NewBlog = () => {
     });
   }
 
-  return (
+  return isCompleted ? (
     <div className="form-wrapper" onClick={closeProfileToolTip}>
       <Header submitHandler={submitHandler} />
       <div
@@ -83,6 +85,8 @@ const NewBlog = () => {
       <h2 style={{ textAlign: "center", marginTop: "1em" }}>Blog's Content</h2>
       <Editor setBlogContent={setBlogContent} />
     </div>
+  ) : (
+    <Navigate to={"/profile"} />
   );
 };
 export default NewBlog;

@@ -60,6 +60,9 @@ const Body = () => {
           </div>
         </div>
       </div>
+      <button>
+        <Link to={"/"}>Home</Link>
+      </button>
     </div>
   );
 };
