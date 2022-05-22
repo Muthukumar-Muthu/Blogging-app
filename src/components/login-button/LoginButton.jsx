@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Login } from "../../firebase/authentication/userDetails";
 import { context } from "../../context/ContextProvider";
+import { getUserDetails } from "../../firebase/firestore/getUserDetails";
 const LoginButton = ({ style, text, callback }) => {
   const { navigate } = useContext(context);
   return (
@@ -8,7 +9,7 @@ const LoginButton = ({ style, text, callback }) => {
       style={{ ...style }}
       onClick={() => {
         Login(() => {
-          callback ? callback() : navigate("/");
+          callback ? callback() : defaultCallback(navigate);
         });
       }}
       className="login-button"
@@ -18,3 +19,12 @@ const LoginButton = ({ style, text, callback }) => {
   );
 };
 export default LoginButton;
+
+function defaultCallback(navigate) {
+  getUserDetails("userProfileCompleted").then((isCompleted) => {
+    if (isCompleted) navigate("/");
+    else {
+      navigate("/userprofilenotcompleted");
+    }
+  });
+}

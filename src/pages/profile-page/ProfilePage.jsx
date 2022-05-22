@@ -5,6 +5,7 @@ import "./style.css";
 import Header from "./header/Header";
 import { getUserName } from "../../firebase/authentication/userDetails";
 import Body from "./body/Body";
+import { Link } from "react-router-dom";
 const ProfilePage = () => {
   useEffect(() => {
     const title = document.querySelector("title");

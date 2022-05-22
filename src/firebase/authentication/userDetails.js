@@ -26,6 +26,7 @@ async function Logout(fun = () => {}) {
   try {
     console.log(await signOut(auth));
     fun();
+    console.clear();
   } catch (error) {
     console.log(error);
   }
@@ -43,7 +44,7 @@ function getUserMail() {
   return auth.currentUser?.email;
 }
 function getUserPhoto() {
-  return auth.currentUser?.photoURL || "assests/user-photo.png";
+  return auth.currentUser?.photoURL || "/assests/user-photo.png";
 }
 export {
   getUserId,
