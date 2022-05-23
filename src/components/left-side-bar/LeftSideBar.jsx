@@ -11,8 +11,6 @@ import Profile from "../profile/Profile";
 import ToolTip from "../../hoc/tool-tip/ToolTip";
 import "./style.css";
 const LeftSideBar = ({ windowWidth }) => {
-  console.log(windowWidth, "width");
-
   return (
     <div
       className="leftsidebar"

@@ -54,10 +54,19 @@ export default function Home() {
   }
 
   return (
-    <div className="home" onClick={closeProfileToolTip}>
+    <div
+      className="home"
+      style={{
+        display: "flex",
+        flexDirection: "column",
+      }}
+      onClick={closeProfileToolTip}
+    >
       <LeftSideBar windowWidth={windowWidth} />
       <div
+        className="home-center"
         style={{
+          position: "static",
           marginLeft: !(windowWidth < 720) ? leftMargin : "1em",
           marginRight: !(windowWidth < 720) ? rightMargin : "1em",
           paddingInline: windowWidth < 720 ? "0.5em" : "2em",
@@ -71,11 +80,7 @@ export default function Home() {
           <Route path="/" element={<BlogList blogs={blogs} />} />
         </Routes>
       </div>
-      <RightSideBar
-        style={{
-          display: windowWidth < 720 ? "none" : "",
-        }}
-      />
+      <RightSideBar windowWidth={windowWidth} />
     </div>
   );
 }

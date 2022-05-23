@@ -16,7 +16,6 @@ export const AuthProvider = ({ children }) => {
       setPending(false);
       if (user) {
         getUserDetails("userProfileCompleted").then((completeStatus) => {
-          console.log(completeStatus);
           setIsCompleted(completeStatus);
         });
       }
