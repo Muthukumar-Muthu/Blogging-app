@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 export const Margin = (rendered) => {
-  console.log(rendered);
-
   const [leftMargin, setLeftMargin] = useState(getWidth("leftsidebar") || 0);
   const [rightMargin, setRightMargin] = useState(getWidth("rightsidebar") || 0);
-  console.log(leftMargin, rightMargin, rendered, "Margin");
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
   useEffect(() => {
     window.addEventListener("resize", () => {
       setLeftMargin(getWidth("leftsidebar"));
       setRightMargin(getWidth("rightsidebar"));
+      setWindowWidth(window.innerWidth);
     });
   }, []);
   useEffect(() => {
@@ -21,6 +21,7 @@ export const Margin = (rendered) => {
   return {
     leftMargin,
     rightMargin,
+    windowWidth,
   };
 };
 function getWidth(className) {

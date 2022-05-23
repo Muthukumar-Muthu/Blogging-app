@@ -1,7 +1,3 @@
-.blog-list {
-  height: 100vh;
-}
-
 .blog-list .horizontal-line {
   padding: 0.25em;
   border-bottom: thin solid lightgrey;

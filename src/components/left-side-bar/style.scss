@@ -3,6 +3,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: white;
+  backdrop-filter: 0.5;
 
   .icons {
     display: flex;

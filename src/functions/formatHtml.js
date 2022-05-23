@@ -5,8 +5,6 @@ import _ from "lodash";
 
 //converting html in string to acutal html
 function fixBlogObj(blogObj) {
-  console.log(blogObj);
-
   try {
     const obj = _.cloneDeep(blogObj);
     const { blogContent } = obj;

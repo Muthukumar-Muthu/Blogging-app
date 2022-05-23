@@ -17,7 +17,7 @@ import { Margin } from "../../hooks/Margin";
 export default function Home() {
   const [blogs, setBlogs] = useState([]);
   const [rendered, setRenderd] = useState(false);
-  const { leftMargin, rightMargin } = Margin(rendered);
+  const { leftMargin, rightMargin, windowWidth } = Margin(rendered);
 
   const { closeProfileToolTip, user } = useContext(context);
 
@@ -54,13 +54,22 @@ export default function Home() {
   }
 
   return (
-    <div className="home" onClick={closeProfileToolTip}>
-      <LeftSideBar />
+    <div
+      className="home"
+      style={{
+        display: "flex",
+        flexDirection: "column",
+      }}
+      onClick={closeProfileToolTip}
+    >
+      <LeftSideBar windowWidth={windowWidth} />
       <div
+        className="home-center"
         style={{
-          marginLeft: leftMargin,
-          marginRight: rightMargin,
-          paddingInline: "2em",
+          position: "static",
+          marginLeft: !(windowWidth < 720) ? leftMargin : "1em",
+          marginRight: !(windowWidth < 720) ? rightMargin : "1em",
+          paddingInline: windowWidth < 720 ? "0.5em" : "2em",
         }}
       >
         <Routes>
@@ -71,7 +80,7 @@ export default function Home() {
           <Route path="/" element={<BlogList blogs={blogs} />} />
         </Routes>
       </div>
-      <RightSideBar />
+      <RightSideBar windowWidth={windowWidth} />
     </div>
   );
 }

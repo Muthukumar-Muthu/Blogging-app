@@ -5,6 +5,7 @@ import { userContext } from "../context/UserContext";
 
 const PrivateRoute = ({ element: C }) => {
   const { user } = useContext(userContext);
+
   const location = useLocation();
   const isPublicPath = comparePath(`/blog/:userId/:blogId`, location.pathname);
   return isPublicPath ? C : user ? C : <Navigate to={"/login"} />;

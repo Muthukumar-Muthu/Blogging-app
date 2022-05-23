@@ -58,6 +58,7 @@ const NewBlog = () => {
           margin: "2em",
           justifyContent: "center",
           alignItems: "center",
+          flexWrap: "wrap",
         }}
       >
         <label htmlFor="heading">
