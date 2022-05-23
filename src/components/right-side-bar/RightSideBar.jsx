@@ -4,7 +4,7 @@ import Author from "../author/Author";
 import "./style.css";
 import breakPath from "../../functions/breakPath";
 
-const RightSideBar = () => {
+const RightSideBar = ({ style }) => {
   const [isBlog, setIsBlog] = useState(false);
   const location = useLocation();
 
@@ -17,7 +17,7 @@ const RightSideBar = () => {
   }, [location]);
 
   return (
-    <div className="right-side-bar-wrapper rightsidebar">
+    <div className="right-side-bar-wrapper rightsidebar" style={{ ...style }}>
       {isBlog ? (
         <Author />
       ) : (

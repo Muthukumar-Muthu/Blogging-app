@@ -10,13 +10,14 @@ import {
 } from "../../firebase/authentication/userDetails";
 import { context } from "../../context/ContextProvider";
 import LoginButton from "../login-button/LoginButton";
-const Profile = ({ position }) => {
+const Profile = ({ position, style }) => {
   const { setshowToolTip, showToolTip, user, locationRef } =
     useContext(context);
   const navigate = useNavigate();
   return (
     <div
       className="profile"
+      style={{ ...style }}
       onMouseEnter={() => {
         setshowToolTip(true);
       }}
