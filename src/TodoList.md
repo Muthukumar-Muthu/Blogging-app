@@ -8,7 +8,7 @@
 - File storage for User photo
 - Profile tooltip separate state
 - ~~ set up :font Montserrat, Responsiveness~~
-- change method of styling
+- ~~change method of styling~~
 - design Landing page
 - Add more login method
 - fix (if google photo is not useable)

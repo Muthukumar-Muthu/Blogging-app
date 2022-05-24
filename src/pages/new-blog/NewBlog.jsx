@@ -21,9 +21,26 @@ const NewBlog = () => {
   const [blogContent, setBlogContent] = useState({});
 
   function submitHandler(e) {
+    console.log("submitting blog");
+
     e.preventDefault();
-    saveBlog({ ...formObj, blogContent: JSON.stringify(blogContent) });
-    navigate("/");
+    const blog = {
+      ...formObj,
+      blogContent: JSON.stringify(blogContent),
+    };
+    console.log(blog, formObj, blogContent);
+
+    if (
+      blog.heading &&
+      blog.blogContent &&
+      (blog.heading ? blog.heading + "" : "").trim !== ""
+    ) {
+      saveBlog({ ...formObj, blogContent: JSON.stringify(blogContent) });
+      navigate("/");
+    } else {
+      alert(`empty blog can't submit`);
+      console.error(`empty blog can't submit`);
+    }
   }
   async function saveBlog(obj) {
     try {
