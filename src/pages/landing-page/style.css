@@ -1,12 +1,38 @@
 .landing-page {
-  margin: 5em;
+  padding: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
-.login-button {
-  border: thin solid grey;
-  display: inline;
-  margin: 1em;
-  padding: 1em;
+.landing-page h1 {
+  text-align: center;
+}
+
+.login-google {
+  border: 3px solid black;
+  border-radius: 5px;
+  margin-inline: auto;
+  width: 150px;
+  padding: 0.25em;
   cursor: pointer;
+}
+
+.login-container {
+  text-align: center;
+  width: 45%;
+  min-width: 300px;
+}
+
+.userpass {
+  margin-block: 1em;
+}
+
+.userpass input {
+  padding: 0.5em 0.25em;
+}
+
+.userpass > * {
+  margin-block: 1em;
 }
 /*# sourceMappingURL=style.css.map */

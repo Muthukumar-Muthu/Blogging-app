@@ -12,7 +12,7 @@ import { isUserSignedIn } from "../../firebase/authentication/userDetails";
 const Blog = () => {
   const { blogId, userId } = useParams();
 
-  const [blogObj, setBlogObj] = useState(null);
+  const [blogObj, setBlogObj] = useState({});
   const [err, setErr] = useState(false);
   const navigate = useNavigate();
   // const { leftMargin, rightMargin } = getMargin();
@@ -47,8 +47,6 @@ const Blog = () => {
     getBlog();
   }, []);
 
-  if (!blogObj) return <h1>Error try after sometime or blog doesn't exist</h1>; //TODO: warn user about unavaiablity of blog
-
   let { heading, blogContent, timeStamp, name } = blogObj;
 
   let date = "";
@@ -61,12 +59,7 @@ const Blog = () => {
   }
 
   return (
-    <div
-      className="blog-wrapper center-component"
-      // style={{
-      //   marginInline: `${leftMargin + 5}px ${rightMargin + 5}px`,
-      // }}
-    >
+    <div className="blog-wrapper center-component">
       {err ? (
         <h1>Error try after sometime or blog doesn't exist</h1>
       ) : (

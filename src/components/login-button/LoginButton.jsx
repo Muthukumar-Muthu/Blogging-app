@@ -12,7 +12,7 @@ const LoginButton = ({ style, text, callback }) => {
           callback ? callback() : defaultCallback(navigate);
         });
       }}
-      className="login-button"
+      className="login-google"
     >
       {text || "Log in with Google"}
     </div>

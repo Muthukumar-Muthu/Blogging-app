@@ -1,10 +1,30 @@
 .landing-page {
-  margin: 5em;
-}
-.login-button {
-  border: thin solid grey;
-  display: inline;
-  margin: 1em;
   padding: 1em;
+  display: flex;
+
+  h1 {
+    text-align: center;
+  }
+}
+.login-google {
+  border: 3px solid black;
+  border-radius: 5px;
+  margin-inline: auto;
+  width: 150px;
+  padding: 0.25em;
   cursor: pointer;
+}
+.login-container {
+  text-align: center;
+  width: 45%;
+  min-width: 300px;
+}
+.userpass {
+  input {
+    padding: 0.5em 0.25em;
+  }
+  > * {
+    margin-block: 1em;
+  }
+  margin-block: 1em;
 }
