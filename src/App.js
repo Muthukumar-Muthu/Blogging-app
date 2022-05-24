@@ -34,6 +34,7 @@ function App() {
           path="/userprofilenotcompleted"
         />
         <Route element={<UserProfile />} path="/user/:uid" />
+        <Route element={<h2>Unkown page</h2>} path="*" />
       </Routes>
     </div>
   );

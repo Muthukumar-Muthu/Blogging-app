@@ -78,6 +78,7 @@ export default function Home() {
             element={<Blog blogs={blogs} />}
           />
           <Route path="/" element={<BlogList blogs={blogs} />} />
+          <Route path="*" element={<div>Unkown page</div>} />
         </Routes>
       </div>
       <RightSideBar windowWidth={windowWidth} />
