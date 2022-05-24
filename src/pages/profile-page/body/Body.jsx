@@ -48,13 +48,13 @@ const Body = () => {
               <Link
                 style={{
                   textDecoration: "underline",
-                  fontSize: "medium",
+                  fontSize: "small",
                   fontWeight: "normal",
                 }}
                 target={"_blank"}
                 to={`/user/${getUserId()}`}
               >
-                {`${domain}/user/${getUserId()}`}
+                {`/user/${getUserId()}`}
               </Link>
             </span>
           </div>

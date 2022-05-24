@@ -82,4 +82,19 @@
 .body .url > * {
   margin-block: auto;
 }
+
+.flex-row,
+.url {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+@media (max-width: 720px) {
+  .body {
+    width: 100%;
+  }
+  .profile-page {
+    padding-inline: 0.25em;
+  }
+}
 /*# sourceMappingURL=style.css.map */
