@@ -9,7 +9,7 @@ import {
   Logout,
 } from "../../firebase/authentication/userDetails";
 import { context } from "../../context/ContextProvider";
-import LoginButton from "../login-button/LoginButton";
+import { LoginButton } from "../login-button/LoginButton";
 const Profile = ({ position, style }) => {
   const { setshowToolTip, showToolTip, user, locationRef } =
     useContext(context);

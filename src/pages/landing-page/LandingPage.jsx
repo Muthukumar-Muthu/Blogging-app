@@ -1,7 +1,7 @@
 import "./style.css";
 
-import LoginButton from "../../components/login-button/LoginButton";
-
+import { LoginButton } from "../../components/login-button/LoginButton";
+import loginWithTestUser from "../../firebase/function/testUser";
 const LandingPage = () => {
   console.log("landing page");
   return (
@@ -43,7 +43,7 @@ const LandingPage = () => {
             <input type="text" value={"*******"} name="" id="" />
           </div>
           <div>
-            <button>Login as Test user</button>
+            <button onClick={loginWithTestUser}>Login as Test user</button>
           </div>
         </div>
         <LoginButton />

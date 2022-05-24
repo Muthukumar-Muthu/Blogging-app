@@ -18,9 +18,9 @@ const LoginButton = ({ style, text, callback }) => {
     </div>
   );
 };
-export default LoginButton;
+export { LoginButton };
 
-function defaultCallback(navigate) {
+export function defaultCallback(navigate) {
   getUserDetails("userProfileCompleted").then((isCompleted) => {
     if (isCompleted) navigate("/");
     else {
