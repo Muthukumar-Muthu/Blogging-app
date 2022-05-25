@@ -17,6 +17,7 @@
 .recent-blogs {
   -ms-flex-preferred-size: 65%;
       flex-basis: 65%;
+  margin-top: 2em;
 }
 
 .login-google {
@@ -29,9 +30,10 @@
 }
 
 .login-container {
+  margin-top: 2em;
   position: -webkit-sticky;
   position: sticky;
-  top: 10px;
+  top: 30px;
   text-align: center;
   -ms-flex-preferred-size: 25%;
       flex-basis: 25%;
@@ -67,6 +69,26 @@
             order: 1;
     position: static;
     margin-inline: auto;
+  }
+}
+
+.navbar {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 05px;
+  right: 05px;
+  background-color: white;
+}
+
+.navbar button {
+  width: 100%;
+}
+
+@media (min-width: 725px) {
+  .navbar,
+  .navbar button {
+    display: none;
   }
 }
 /*# sourceMappingURL=style.css.map */

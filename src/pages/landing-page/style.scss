@@ -10,6 +10,7 @@
 }
 .recent-blogs {
   flex-basis: 65%;
+  margin-top: 2em;
 }
 .login-google {
   border: 3px solid black;
@@ -20,8 +21,9 @@
   cursor: pointer;
 }
 .login-container {
+  margin-top: 2em;
   position: sticky;
-  top: 10px;
+  top: 30px;
   // margin-left: auto;
   text-align: center;
   // width: 45%;
@@ -48,5 +50,22 @@
     order: 1;
     position: static;
     margin-inline: auto;
+  }
+}
+.navbar {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 05px;
+  right: 05px;
+  background-color: white;
+  button {
+    width: 100%;
+  }
+}
+@media (min-width: 725px) {
+  .navbar,
+  .navbar button {
+    display: none;
   }
 }

@@ -15,6 +15,7 @@ import { useState, useEffect } from "react";
 import { db } from "../../firebase/configuration/firebase-config";
 import fixBlogObj from "../../functions/formatHtml";
 import BlogList from "../../components/blog-list/BlogList";
+import Header from "./Header";
 
 const LandingPage = () => {
   const [recentBlogs, setRecentBlogs] = useState([]);
@@ -25,6 +26,7 @@ const LandingPage = () => {
 
   return (
     <div className="landing-page">
+      <Header />
       <section className="recent-blogs">
         {recentBlogs.length === 0 ? (
           <h1>Getting Recent Blogs</h1>
@@ -32,7 +34,7 @@ const LandingPage = () => {
           <BlogList addButton={false} blogs={recentBlogs} />
         )}
       </section>
-      <div className="login-container">
+      <div id="login" className="login-container">
         <h1>Login</h1>
         <div className="userpass">
           <div>
