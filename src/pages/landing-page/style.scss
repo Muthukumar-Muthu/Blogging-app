@@ -1,10 +1,14 @@
 .landing-page {
   padding: 1em;
   display: flex;
-
+  justify-content: space-around;
+  align-items: flex-start;
   h1 {
     text-align: center;
   }
+}
+.recent-blogs {
+  flex-basis: 65%;
 }
 .login-google {
   border: 3px solid black;
@@ -15,9 +19,13 @@
   cursor: pointer;
 }
 .login-container {
+  position: sticky;
+  top: 10px;
+  // margin-left: auto;
   text-align: center;
-  width: 45%;
-  min-width: 300px;
+  // width: 45%;
+  // min-width: 300px;
+  flex-basis: 25%;
 }
 .userpass {
   input {

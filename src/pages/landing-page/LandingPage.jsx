@@ -1,46 +1,47 @@
-import "./style.css";
+import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  limit,
+  orderBy,
+  query,
+} from "firebase/firestore";
 
+import "./style.css";
 import { LoginButton } from "../../components/login-button/LoginButton";
 import loginWithTestUser from "../../firebase/function/testUser";
+import { useState, useEffect } from "react";
+import { db } from "../../firebase/configuration/firebase-config";
+import fixBlogObj from "../../functions/formatHtml";
+import BlogList from "../../components/blog-list/BlogList";
+
 const LandingPage = () => {
-  console.log("landing page");
+  const [recentBlogs, setRecentBlogs] = useState([]);
+
+  useEffect(() => {
+    getRecentBlog(setRecentBlogs);
+  }, []);
+
   return (
     <div className="landing-page">
-      <div>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam deleniti
-        quo cupiditate nam asperiores assumenda autem adipisci, voluptate
-        possimus tempore illo officia ut repellendus mollitia ex iusto nobis at
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet rerum
-        adipisci animi explicabo magnam cumque, culpa, exercitationem est ea et
-        iusto unde quod, in dolore similique atque quam laudantium rem. quis.
-        lorem*8 Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Provident aperiam nemo quae placeat exercitationem eveniet quia ex
-        corrupti quo commodi cumque optio tempora ipsa delectus soluta eum odit,
-        voluptate aspernatur! Recusandae, illum eius, quos temporibus est
-        aliquam dolores explicabo sed dolor similique ipsa tenetur qui. Hic
-        deserunt consequuntur provident reprehenderit maxime delectus. Commodi
-        similique sequi aperiam cumque ipsum praesentium illum? Repellat odio
-        omnis, excepturi atque non pariatur minima aspernatur corrupti doloribus
-        vero autem architecto assumenda aliquam expedita ullam doloremque
-        molestiae, suscipit animi incidunt modi. Ratione facere corrupti
-        similique perspiciatis porro. Repellendus sapiente accusantium tenetur
-        enim odio eligendi porro quas ex nam. Atque officiis laboriosam rerum
-        eaque aperiam, iste dignissimos et dolores aut nostrum? Dolores,
-        voluptatibus impedit. Architecto fugiat facilis dolores! Ab aliquam
-        fugit rem distinctio maxime quod sint velit eos deserunt similique
-        magnam amet commodi assumenda, in illum incidunt, voluptatibus veniam id
-        vitae, voluptate hic aspernatur excepturi odit! Nobis, ullam.
+      <div className="recent-blogs">
+        {recentBlogs.length === 0 ? (
+          <h1>Getting Recent Blogs</h1>
+        ) : (
+          <BlogList addButton={false} blogs={recentBlogs} />
+        )}
       </div>
       <div className="login-container">
         <h1>Login</h1>
         <div className="userpass">
           <div>
-            <h4>User id:</h4>{" "}
-            <input type="text" value={"******"} name="" id="" />
+            <h4>User id:</h4>
+            <input type="text" value={"******"} readOnly name="" id="" />
           </div>
           <div>
-            <h4>Password:</h4>{" "}
-            <input type="text" value={"*******"} name="" id="" />
+            <h4>Password:</h4>
+            <input type="text" value={"*******"} readOnly name="" id="" />
           </div>
           <div>
             <button onClick={loginWithTestUser}>Login as Test user</button>
@@ -52,3 +53,34 @@ const LandingPage = () => {
   );
 };
 export default LandingPage;
+
+async function getRecentBlog(setRecentBlogs) {
+  const recentBlogs = [];
+  console.log("Getting Blogs");
+  const blogsQuery = query(
+    collection(db, `recentBlogs`),
+    orderBy("timeStamp", "desc"),
+    limit(10)
+  );
+  const docs = await getDocs(blogsQuery);
+  const docsSize = docs.size;
+  let count = 0;
+  docs.forEach(async (doc) => {
+    try {
+      const blogObj = await getBlog(doc.data().url);
+      recentBlogs.push(fixBlogObj(blogObj));
+      count = count + 1;
+      if (count === docsSize) setRecentBlogs(recentBlogs);
+    } catch {
+      console.log("something gone wrong");
+    }
+  });
+}
+
+async function getBlog(path = "") {
+  const [userId, blogId] = path.split("/");
+  console.log(userId, blogId);
+  const docRef = `users/${userId.trim()}/blogs/${blogId}`;
+  const docObj = await getDoc(doc(db, docRef));
+  return { authorId: userId.trim(), id: blogId, ...docObj.data() };
+}

@@ -13,6 +13,7 @@ import { db } from "../../firebase/configuration/firebase-config";
 import { context } from "../../context/ContextProvider";
 import fixBlogObj from "../../functions/formatHtml";
 import { Margin } from "../../hooks/Margin";
+import { getUserId } from "../../firebase/authentication/userDetails";
 
 export default function Home() {
   const [blogs, setBlogs] = useState([]);
@@ -46,7 +47,7 @@ export default function Home() {
       let blogsArray = [];
       snapshot.docs.forEach((doc) => {
         const obj = fixBlogObj(doc.data());
-        blogsArray.push({ id: doc.id, ...obj });
+        blogsArray.push({ id: doc.id, ...obj, authorId: getUserId() });
       });
       setBlogs(blogsArray);
     });

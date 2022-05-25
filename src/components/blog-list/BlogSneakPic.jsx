@@ -2,15 +2,24 @@ import { Timestamp } from "firebase/firestore";
 
 import moment from "moment";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import {
   getUserId,
   getUserPhoto,
 } from "../../firebase/authentication/userDetails";
+import getUserDetail from "../../firebase/function/getUserDetail";
 import trim from "../../functions/trimSummary";
+import { fromPairs } from "lodash";
 
 function BlogSneakPic({ BlogObj }) {
-  const { heading, blogContent, timeStamp, name } = BlogObj;
+  const [authorDetail, setAuthorDetail] = useState({});
+  const { heading, blogContent, timeStamp, name, authorId } = BlogObj;
   const blogId = BlogObj.id;
+  useEffect(() => {
+    getUserDetail(authorId)
+      .then((responseObj) => setAuthorDetail(responseObj))
+      .catch((err) => console.warn(err));
+  }, []);
 
   let date = "";
   if (timeStamp) {
@@ -25,9 +34,12 @@ function BlogSneakPic({ BlogObj }) {
   //TODO: LINK TAG MUST ME UPDATED WITH CORRECT ONE
   return (
     <li className="blog-sneak-pic">
-      <Link className="blog-sneak-pic" to={`/blog/${getUserId()}/${blogId}`}>
+      <Link
+        className="blog-sneak-pic"
+        to={`/blog/${authorDetail.userId}/${blogId}`}
+      >
         <div className="head">
-          <img className="author-photo" src={getUserPhoto()} alt="" />
+          <img className="author-photo" src={authorDetail.photoUrl} alt="" />
           <span className="author-name">{name}</span>
           <span className="blog-date">{`· ${date}`}</span>
         </div>
