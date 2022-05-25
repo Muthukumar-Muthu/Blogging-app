@@ -40,7 +40,7 @@ function BlogSneakPic({ BlogObj }) {
       >
         <div className="head">
           <img className="author-photo" src={authorDetail.photoUrl} alt="" />
-          <span className="author-name">{name}</span>
+          <span className="author-name">{authorDetail.name}</span>
           <span className="blog-date">{`· ${date}`}</span>
         </div>
         <div className="content">

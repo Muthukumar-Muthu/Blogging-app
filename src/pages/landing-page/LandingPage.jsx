@@ -31,7 +31,16 @@ const LandingPage = () => {
         {recentBlogs.length === 0 ? (
           <h1>Getting Recent Blogs</h1>
         ) : (
-          <BlogList addButton={false} blogs={recentBlogs} />
+          <>
+            <h2
+              style={{
+                textAlign: "center",
+              }}
+            >
+              Recent Blogs
+            </h2>
+            <BlogList addButton={false} blogs={recentBlogs} />{" "}
+          </>
         )}
       </section>
       <div id="login" className="login-container">

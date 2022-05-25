@@ -13,6 +13,7 @@ import { context } from "../../context/ContextProvider";
 import Header from "../../components/header/Header";
 import Editor from "../../components/editor/Editor";
 import { userContext } from "../../context/UserContext";
+import setRecentBlog from "../../firebase/function/setRecentBlog";
 const NewBlog = () => {
   const { closeProfileToolTip } = useContext(context);
   const { isCompleted } = useContext(userContext);
@@ -28,7 +29,6 @@ const NewBlog = () => {
       ...formObj,
       blogContent: JSON.stringify(blogContent),
     };
-    console.log(blog, formObj, blogContent);
 
     if (
       blog.heading &&
@@ -51,8 +51,12 @@ const NewBlog = () => {
         name: getUserName(),
         timeStamp: serverTimestamp(),
       };
-      // console.log(saveObj, userId);
-      await addDoc(collection(db, `users/${userId}/blogs`), saveObj);
+
+      const docRef = await addDoc(
+        collection(db, `users/${userId}/blogs`),
+        saveObj
+      );
+      setRecentBlog(getUserId(), docRef.id);
     } catch (error) {
       console.error(error);
     }
