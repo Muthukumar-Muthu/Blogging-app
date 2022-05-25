@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-
+import { useState, useEffect } from "react/";
 import "./style.css";
 import {
   getUserPhoto,
@@ -7,10 +7,16 @@ import {
   getUserName,
 } from "../../../firebase/authentication/userDetails";
 import Bio from "./Bio";
+import getUserDetail from "../../../firebase/function/getUserDetail";
 
 const Body = () => {
   let domain = window.location.hostname;
-
+  const [userDetail, setUserDetail] = useState({});
+  useEffect(() => {
+    getUserDetail(getUserId())
+      .then((reponseObj) => setUserDetail(reponseObj))
+      .catch((err) => console.error(err));
+  }, []);
   return (
     <div className="body">
       <h2>About You</h2>
@@ -21,7 +27,7 @@ const Body = () => {
             readOnly
             spellCheck="false"
             type="text"
-            value={getUserName()}
+            value={userDetail.name}
           />
         </div>
       </div>
@@ -31,7 +37,7 @@ const Body = () => {
         <div className="left">
           <h3>Photo</h3>
           <div className="user-image">
-            <img src={getUserPhoto()} alt="" />
+            <img src={userDetail.photoUrl} alt="" />
           </div>
         </div>
       </div>
@@ -40,7 +46,7 @@ const Body = () => {
         <div>
           <div className="user-name">
             <h3>Username</h3>
-            <span>{getUserName()}</span>
+            <span>{userDetail.name}</span>
           </div>
           <div className="url">
             <h3>Profile URL</h3>
@@ -52,9 +58,9 @@ const Body = () => {
                   fontWeight: "normal",
                 }}
                 target={"_blank"}
-                to={`/user/${getUserId()}`}
+                to={`/user/${userDetail.userId}`}
               >
-                {`/user/${getUserId()}`}
+                {`/user/${userDetail.userId}`}
               </Link>
             </span>
           </div>

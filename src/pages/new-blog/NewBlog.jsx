@@ -13,6 +13,7 @@ import { context } from "../../context/ContextProvider";
 import Header from "../../components/header/Header";
 import Editor from "../../components/editor/Editor";
 import { userContext } from "../../context/UserContext";
+import setRecentBlog from "../../firebase/function/setRecentBlog";
 const NewBlog = () => {
   const { closeProfileToolTip } = useContext(context);
   const { isCompleted } = useContext(userContext);
@@ -21,9 +22,25 @@ const NewBlog = () => {
   const [blogContent, setBlogContent] = useState({});
 
   function submitHandler(e) {
+    console.log("submitting blog");
+
     e.preventDefault();
-    saveBlog({ ...formObj, blogContent: JSON.stringify(blogContent) });
-    navigate("/");
+    const blog = {
+      ...formObj,
+      blogContent: JSON.stringify(blogContent),
+    };
+
+    if (
+      blog.heading &&
+      blog.blogContent &&
+      (blog.heading ? blog.heading + "" : "").trim !== ""
+    ) {
+      saveBlog({ ...formObj, blogContent: JSON.stringify(blogContent) });
+      navigate("/");
+    } else {
+      alert(`empty blog can't submit`);
+      console.error(`empty blog can't submit`);
+    }
   }
   async function saveBlog(obj) {
     try {
@@ -34,8 +51,12 @@ const NewBlog = () => {
         name: getUserName(),
         timeStamp: serverTimestamp(),
       };
-      // console.log(saveObj, userId);
-      await addDoc(collection(db, `users/${userId}/blogs`), saveObj);
+
+      const docRef = await addDoc(
+        collection(db, `users/${userId}/blogs`),
+        saveObj
+      );
+      setRecentBlog(getUserId(), docRef.id);
     } catch (error) {
       console.error(error);
     }

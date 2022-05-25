@@ -12,7 +12,8 @@ import { isUserSignedIn } from "../../firebase/authentication/userDetails";
 const Blog = () => {
   const { blogId, userId } = useParams();
 
-  const [blogObj, setBlogObj] = useState(null);
+  const [blogObj, setBlogObj] = useState({});
+  const [err, setErr] = useState(false);
   const navigate = useNavigate();
   // const { leftMargin, rightMargin } = getMargin();
   async function getBlog() {
@@ -20,7 +21,8 @@ const Blog = () => {
       const blog = await getDoc(doc(db, `users/${userId}/blogs/${blogId}`));
       setBlogObj(fixBlogObj(blog.data()));
     } catch (error) {
-      console.warn(error);
+      setErr(true);
+      console.warn(error, "ERR");
     }
   }
 
@@ -45,8 +47,6 @@ const Blog = () => {
     getBlog();
   }, []);
 
-  if (!blogObj) return <></>; //TODO: warn user about unavaiablity of blog
-
   let { heading, blogContent, timeStamp, name } = blogObj;
 
   let date = "";
@@ -59,33 +59,32 @@ const Blog = () => {
   }
 
   return (
-    <div
-      className="blog-wrapper center-component"
-      // style={{
-      //   marginInline: `${leftMargin + 5}px ${rightMargin + 5}px`,
-      // }}
-    >
-      <div
-        className="blog"
-        style={{
-          marginTop: "1em",
-        }}
-      >
-        <div className="buttons">
-          <button style={{ marginInline: "auto" }} onClick={deleteBlog}>
-            Delete
-          </button>
-          <button style={{ marginInline: "auto" }} onClick={updateBlog}>
-            Update
-          </button>
+    <div className="blog-wrapper center-component">
+      {err ? (
+        <h1>Error try after sometime or blog doesn't exist</h1>
+      ) : (
+        <div
+          className="blog"
+          style={{
+            marginTop: "1em",
+          }}
+        >
+          <div className="buttons">
+            <button style={{ marginInline: "auto" }} onClick={deleteBlog}>
+              Delete
+            </button>
+            <button style={{ marginInline: "auto" }} onClick={updateBlog}>
+              Update
+            </button>
+          </div>
+          <h2 className="heading">{heading}</h2>
+          <p className="summary">{blogContent}</p>
+          <div className="flex">
+            <h4 className="author">{name}</h4>
+            <h6 className="time">{date}</h6>
+          </div>
         </div>
-        <h2 className="heading">{heading}</h2>
-        <p className="summary">{blogContent}</p>
-        <div className="flex">
-          <h4 className="author">{name}</h4>
-          <h6 className="time">{date}</h6>
-        </div>
-      </div>
+      )}
     </div>
   );
 };

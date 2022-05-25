@@ -1,4 +1,5 @@
 import { FaGripVertical, FaBell } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 import Profile from "../../../components/profile/Profile";
 import "./style.css";
@@ -6,7 +7,9 @@ import "./style.css";
 const Header = () => {
   return (
     <header className="header">
-      <img src="assests/logo.png" className="logo" alt="" />
+      <Link to={"/"}>
+        <img src="assests/logo.png" className="logo" alt="" />
+      </Link>
 
       <FaGripVertical
         className="icon"

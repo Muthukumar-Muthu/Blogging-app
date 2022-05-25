@@ -1,12 +1,94 @@
 .landing-page {
-  margin: 5em;
+  padding: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
-.login-button {
-  border: thin solid grey;
-  display: inline;
-  margin: 1em;
-  padding: 1em;
+.landing-page h1 {
+  text-align: center;
+}
+
+.recent-blogs {
+  -ms-flex-preferred-size: 65%;
+      flex-basis: 65%;
+  margin-top: 2em;
+}
+
+.login-google {
+  border: 3px solid black;
+  border-radius: 5px;
+  margin-inline: auto;
+  width: 150px;
+  padding: 0.25em;
   cursor: pointer;
+}
+
+.login-container {
+  margin-top: 2em;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 30px;
+  text-align: center;
+  -ms-flex-preferred-size: 25%;
+      flex-basis: 25%;
+}
+
+.userpass {
+  margin-block: 1em;
+}
+
+.userpass input {
+  padding: 0.5em 0.25em;
+}
+
+.userpass > * {
+  margin-block: 1em;
+}
+
+@media (max-width: 720px) {
+  .landing-page {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .recent-blogs {
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+  }
+  .login-container {
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+    position: static;
+    margin-inline: auto;
+  }
+}
+
+.navbar {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 05px;
+  right: 05px;
+  background-color: white;
+}
+
+.navbar button {
+  width: 100%;
+}
+
+@media (min-width: 725px) {
+  .navbar,
+  .navbar button {
+    display: none;
+  }
 }
 /*# sourceMappingURL=style.css.map */

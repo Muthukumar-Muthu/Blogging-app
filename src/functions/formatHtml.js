@@ -15,7 +15,7 @@ function fixBlogObj(blogObj) {
     return obj;
   } catch (error) {
     console.warn(error);
-    return {};
+    throw new Error("Something gone wrong");
   }
 }
 function stringToHtml(string) {

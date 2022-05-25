@@ -9,6 +9,7 @@ import ProfilePage from "./pages/profile-page/ProfilePage";
 import PrivateComponent from "./hoc/PrivateComponent";
 import UpdateBlog from "./pages/update-blog/UpdateBlog";
 import UserProfileIncomplete from "./pages/userprofileincomplete/UserProfileIncomplete";
+import UserProfile from "./pages/user-profile/UserProfile";
 
 function App() {
   return (
@@ -32,6 +33,8 @@ function App() {
           element={<PrivateComponent element={<UserProfileIncomplete />} />}
           path="/userprofilenotcompleted"
         />
+        <Route element={<UserProfile />} path="/user/:uid" />
+        <Route element={<h2>Unkown page</h2>} path="*" />
       </Routes>
     </div>
   );

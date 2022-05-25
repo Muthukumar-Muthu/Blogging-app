@@ -100,7 +100,7 @@ const Author = () => {
                     target={"_blank"}
                     to={`/user/${userId}`}
                   >
-                    {`/user/${userId}`}
+                    {`/user/${(userId + "").slice(0, 5)}....`}
                   </Link>
                 }
               </span>
