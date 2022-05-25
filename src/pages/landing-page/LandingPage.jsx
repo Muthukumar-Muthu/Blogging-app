@@ -25,13 +25,13 @@ const LandingPage = () => {
 
   return (
     <div className="landing-page">
-      <div className="recent-blogs">
+      <section className="recent-blogs">
         {recentBlogs.length === 0 ? (
           <h1>Getting Recent Blogs</h1>
         ) : (
           <BlogList addButton={false} blogs={recentBlogs} />
         )}
-      </div>
+      </section>
       <div className="login-container">
         <h1>Login</h1>
         <div className="userpass">

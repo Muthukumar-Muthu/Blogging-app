@@ -48,4 +48,25 @@
 .userpass > * {
   margin-block: 1em;
 }
+
+@media (max-width: 720px) {
+  .landing-page {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .recent-blogs {
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+  }
+  .login-container {
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+    position: static;
+    margin-inline: auto;
+  }
+}
 /*# sourceMappingURL=style.css.map */
