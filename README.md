@@ -1,70 +1,66 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with  [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Follow these simple steps to have your own clone
 
-In the project directory, you can run:
+#### 1: Clone this repo using this command
 
-### `npm start`
+`git clone https://github.com/Muthukumar-Muthu/Blogging-app.git`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+#### 2: Enter
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+`cd Blogging-App`
 
-### `npm test`
+#### 3: Next
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+`npm install`
+#### 4: Create new Firebase project at console.firebase.google.com and copy the firebase Config object and paste it in the src/firebase/configuration/firebase-config.js . Use this link to know more about that https://firebase.google.com/docs/web/setup
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### 5: Hit  `npm start`  in terminal & now the app starts running at port 3000.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Set Up Hosting in Firebase
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### 0: Install firebase cli  `npm i firebase-tools`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+#### 1: Hit command  `firebase init`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+#### 2: Enter Yes
 
-## Learn More
+#### 3: Answer some questions. [Use this link](https://www.youtube.com/watch?v=IDHfvpsYShs)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### 4: Enter  `build`  for directory && select  `Yes`  for all other options.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### 5: After initialization Completed. Enter
 
-### Code Splitting
+`npm run build`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+#### 6: Now the last command
 
-### Analyzing the Bundle Size
+Enter  `firebase deploy`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+#### Boom! You have successfully hosted your firebase app. Click on the link and Enjoy!. Don't forget to rate the repository.
 
-### Making a Progressive Web App
+# Project Feature
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+ 1. User authorization 
+ 2. Protected routes
+ 3. Logged in user can create new blog
+ 4. Rich text editor  
+ 5. User can share share their blog with others (For visiting blog pages, authorization is not needed)
+ 6. User can setup their profile (but for now only bio can be edited)
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Some features that may be add in the future
+	
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+ 1. User can save a particular blog in their saved folder
+ 2. Improved UI/UX overall
+ 3. More customization of their profile
+ 4. Fixing text editor error.
+ 5. Add more customization of user profile
+ 6. Changes in home feed, instead of own blog-list feed, can change it into global recent blog-list and user's following people's blogs.
+ 7. And much more
